@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>智慧屋~様</title>
+  
+  <subtitle>様&amp;Java</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yangyangyin.top/"/>
+  <updated>2021-08-05T13:25:47.095Z</updated>
+  <id>http://yangyangyin.top/</id>
+  
+  <author>
+    <name>YinSir</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EEE</title>
+    <link href="http://yangyangyin.top/posts/46818.html"/>
+    <id>http://yangyangyin.top/posts/46818.html</id>
+    <published>2021-08-05T13:24:46.000Z</published>
+    <updated>2021-08-05T13:25:47.095Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;​        &lt;code&gt;前面的不小心删了&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;​        &lt;code&gt;以后慢慢看看吧&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;​       
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>区块链概念认知--初步认识区块链</title>
+    <link href="http://yangyangyin.top/posts/45753.html"/>
+    <id>http://yangyangyin.top/posts/45753.html</id>
+    <published>2021-07-20T14:32:13.000Z</published>
+    <updated>2021-07-21T11:33:10.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;从这篇进入区块链世界，初步认识区块链……&lt;/p&gt;
+&lt;p&gt;区块链的概念认知，看这篇就够了&lt;/p&gt;
+&lt;h1 id=&quot;1-初步认识区块链&quot;&gt;&lt;a href=&quot;#1-初步认识区块链&quot; class=&quot;headerlink&quot; title=&quot;1. 初步认识区块链&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="区块链学习之路" scheme="http://yangyangyin.top/categories/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="区块链" scheme="http://yangyangyin.top/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>详解二叉堆--实现优先队列</title>
+    <link href="http://yangyangyin.top/posts/47223.html"/>
+    <id>http://yangyangyin.top/posts/47223.html</id>
+    <published>2021-07-12T08:24:58.000Z</published>
+    <updated>2021-07-12T08:43:35.974Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;二叉堆（Binary Heap）没什么神秘，性质比二叉搜索树 BST
+        
+      
+    
+    </summary>
+    
+      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="队列 二叉堆" scheme="http://yangyangyin.top/tags/%E9%98%9F%E5%88%97-%E4%BA%8C%E5%8F%89%E5%A0%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>双指针应用场景总结</title>
+    <link href="http://yangyangyin.top/posts/22462.html"/>
+    <id>http://yangyangyin.top/posts/22462.html</id>
+    <published>2021-07-11T03:55:48.000Z</published>
+    <updated>2021-07-11T09:09:24.234Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;双指针技巧分为两类，一类是「快慢指针」，一类是「左右指针」。&lt;/p&gt;
+&lt;p&gt;前者解决主要解决&lt;strong&gt;链表&lt;/strong&gt;中的问题，比如典型的判定链表中是否包含环；&lt;/p&gt;
+&lt;p&gt;后者主要解决&lt;strong&gt;数组&lt;/strong&gt;（或者字符串）中的问题，比如二分查找
+        
+      
+    
+    </summary>
+    
+      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="双指针" scheme="http://yangyangyin.top/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最长回文子串--回文串</title>
+    <link href="http://yangyangyin.top/posts/38712.html"/>
+    <id>http://yangyangyin.top/posts/38712.html</id>
+    <published>2021-07-10T11:01:11.000Z</published>
+    <updated>2021-07-11T03:54:37.304Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;虽然回文串问题本身没啥意义，但主要学习回文串问题的核心思想是什么。&lt;/p&gt;
+&lt;p&gt;首先，明确一下什：&lt;strong&gt;回文串就是正着读和反着读都一样的字符串&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;比如说字符串&lt;code&gt;aba&lt;/code&gt;和&lt;code&gt;abba&lt;/code&gt;都是
+        
+      
+    
+    </summary>
+    
+      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="回文" scheme="http://yangyangyin.top/tags/%E5%9B%9E%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分组反转链表（迭代实现）</title>
+    <link href="http://yangyangyin.top/posts/43987.html"/>
+    <id>http://yangyangyin.top/posts/43987.html</id>
+    <published>2021-07-10T05:19:58.000Z</published>
+    <updated>2021-07-11T03:54:47.592Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;反转整个链表不是难事，分区间反转也不在话下&lt;/p&gt;
+&lt;p&gt;那如果是将链表分组反转，怎么实现呢？&lt;/p&gt;
+&lt;h2 id=&quot;1-题目&quot;&gt;&lt;a href=&quot;#1-题目&quot; class=&quot;headerlink&quot; title=&quot;1. 题目&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="链表 迭代" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8-%E8%BF%AD%E4%BB%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反转链表--一看就懂（递归）</title>
+    <link href="http://yangyangyin.top/posts/4493.html"/>
+    <id>http://yangyangyin.top/posts/4493.html</id>
+    <published>2021-07-10T02:31:01.000Z</published>
+    <updated>2021-07-11T03:54:56.333Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;反转单链表的迭代实现不是一个困难的事情，但是递归实现就有点难度了，如果再加一点难度，仅仅反转单链表中的一部分，而不是全部反转，应该怎么实现呢??&lt;/p&gt;
+&lt;h2 id=&quot;1-反转整个单链表&quot;&gt;&lt;a href=&quot;#1-反转整个单链表&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="递归 链表" scheme="http://yangyangyin.top/tags/%E9%80%92%E5%BD%92-%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker入门到精通--纯享版</title>
+    <link href="http://yangyangyin.top/posts/7608.html"/>
+    <id>http://yangyangyin.top/posts/7608.html</id>
+    <published>2021-07-09T12:25:23.000Z</published>
+    <updated>2021-07-10T02:31:26.360Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt; docker从入门到精通就看这个就够了。docker是干什么的呢，主要就是容器技术&lt;/p&gt;
+&lt;p&gt;docker就很好解决了环境隔离的问题，别人程序不会影响到自己的程序&lt;/p&gt;
+&lt;h1 id=&quot;docker-pull-redisDocker&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="docker" scheme="http://yangyangyin.top/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://yangyangyin.top/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis基础</title>
+    <link href="http://yangyangyin.top/posts/26216.html"/>
+    <id>http://yangyangyin.top/posts/26216.html</id>
+    <published>2021-06-20T01:27:10.000Z</published>
+    <updated>2021-06-27T08:01:18.415Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Redis&quot;&gt;&lt;a href=&quot;#Redis&quot; class=&quot;headerlink&quot; title=&quot;Redis&quot;&gt;&lt;/a&gt;Redis&lt;/h1&gt;&lt;h2 id=&quot;1-NoSQL的引言&quot;&gt;&lt;a href=&quot;#1-NoSQL的引言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="redis" scheme="http://yangyangyin.top/categories/redis/"/>
+    
+    
+      <category term="redis" scheme="http://yangyangyin.top/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis分布式缓存</title>
+    <link href="http://yangyangyin.top/posts/34809.html"/>
+    <id>http://yangyangyin.top/posts/34809.html</id>
+    <published>2021-06-09T09:22:31.000Z</published>
+    <updated>2021-06-28T05:02:48.442Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;redis中分布式缓存实现&quot;&gt;&lt;a href=&quot;#redis中分布式缓存实现&quot; class=&quot;headerlink&quot; title=&quot;redis中分布式缓存实现&quot;&gt;&lt;/a&gt;redis中分布式缓存实现&lt;/h2&gt;&lt;h3 id=&quot;1-问题思考&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="redis" scheme="http://yangyangyin.top/categories/redis/"/>
+    
+    
+      <category term="redis" scheme="http://yangyangyin.top/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JWT实战教程</title>
+    <link href="http://yangyangyin.top/posts/39108.html"/>
+    <id>http://yangyangyin.top/posts/39108.html</id>
+    <published>2021-06-02T09:43:09.000Z</published>
+    <updated>2021-06-27T10:36:26.897Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JWT-实战教程&quot;&gt;&lt;a href=&quot;#JWT-实战教程&quot; class=&quot;headerlink&quot; title=&quot;JWT 实战教程&quot;&gt;&lt;/a&gt;JWT 实战教程&lt;/h1&gt;
+
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;1-什么是JWT&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="token" scheme="http://yangyangyin.top/categories/token/"/>
+    
+      <category term="认证" scheme="http://yangyangyin.top/categories/token/%E8%AE%A4%E8%AF%81/"/>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/token/%E8%AE%A4%E8%AF%81/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JWT" scheme="http://yangyangyin.top/tags/JWT/"/>
+    
+      <category term="令牌" scheme="http://yangyangyin.top/tags/%E4%BB%A4%E7%89%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MybatisPlus之配置</title>
+    <link href="http://yangyangyin.top/posts/31806.html"/>
+    <id>http://yangyangyin.top/posts/31806.html</id>
+    <published>2021-06-01T14:22:03.000Z</published>
+    <updated>2021-06-27T10:36:26.904Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今日内容： 学习MybatisPlus 常用的配置 —spring boot&lt;/p&gt;
+&lt;h2 id=&quot;1-基本配置&quot;&gt;&lt;a href=&quot;#1-基本配置&quot; class=&quot;headerlink&quot; title=&quot;1. 基本配置&quot;&gt;&lt;/a&gt;1. 基本配置&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="插件学习" scheme="http://yangyangyin.top/categories/%E6%8F%92%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="MybatisPlus - 配置" scheme="http://yangyangyin.top/tags/MybatisPlus-%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatisPlus之CRUD</title>
+    <link href="http://yangyangyin.top/posts/32902.html"/>
+    <id>http://yangyangyin.top/posts/32902.html</id>
+    <published>2021-05-31T13:26:05.000Z</published>
+    <updated>2021-06-27T10:36:26.901Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今日内容:&lt;/p&gt;
+&lt;p&gt;mybatisplus集成与SpringBoot….&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;1-导入依赖&quot;&gt;&lt;a href=&quot;#1-导入依赖&quot; class=&quot;headerlink&quot; title=&quot;1. 导入依赖&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="插件学习" scheme="http://yangyangyin.top/categories/%E6%8F%92%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="MyBatisPlus" scheme="http://yangyangyin.top/tags/MyBatisPlus/"/>
+    
+      <category term="CRUD" scheme="http://yangyangyin.top/tags/CRUD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习微信小程序-登录接口</title>
+    <link href="http://yangyangyin.top/posts/42562.html"/>
+    <id>http://yangyangyin.top/posts/42562.html</id>
+    <published>2021-05-30T14:24:11.000Z</published>
+    <updated>2021-06-27T10:36:26.906Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;微信小程序，后端的变化不大，只是有时候需要用到微信提供的接口来完成业务…&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;官方文档&lt;/code&gt;: &lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="自学之路" scheme="http://yangyangyin.top/categories/%E8%87%AA%E5%AD%A6%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="微信小程序" scheme="http://yangyangyin.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot快速入门-含详解</title>
+    <link href="http://yangyangyin.top/posts/51807.html"/>
+    <id>http://yangyangyin.top/posts/51807.html</id>
+    <published>2021-05-30T08:59:24.000Z</published>
+    <updated>2021-06-27T10:36:26.905Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今日内容: 主要复习SpringBoot相关概念，深入理解….&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;1-快速创建入门&quot;&gt;&lt;a href=&quot;#1-快速创建入门&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="复习" scheme="http://yangyangyin.top/categories/%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://yangyangyin.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下有关Mysql的相关命令</title>
+    <link href="http://yangyangyin.top/posts/546.html"/>
+    <id>http://yangyangyin.top/posts/546.html</id>
+    <published>2021-05-30T00:49:12.000Z</published>
+    <updated>2021-06-28T04:43:22.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;记录linux下mysql的相关问题….&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;1-修改原来的mysql数据库密码&quot;&gt;&lt;a href=&quot;#1-修改原来的mysql数据库密码&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="linux" scheme="http://yangyangyin.top/tags/linux/"/>
+    
+      <category term="MySql" scheme="http://yangyangyin.top/tags/MySql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux安装Mysql</title>
+    <link href="http://yangyangyin.top/posts/35752.html"/>
+    <id>http://yangyangyin.top/posts/35752.html</id>
+    <published>2021-05-29T09:43:09.000Z</published>
+    <updated>2021-06-27T10:36:26.902Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Linux 配置 Mysql 环境;配了好久，终于配起来了……&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;安装Mysql&quot;&gt;&lt;a href=&quot;#安装Mysql&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="http://yangyangyin.top/tags/Linux/"/>
+    
+      <category term="Mysql" scheme="http://yangyangyin.top/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL基础</title>
+    <link href="http://yangyangyin.top/posts/39026.html"/>
+    <id>http://yangyangyin.top/posts/39026.html</id>
+    <published>2021-05-28T00:31:31.000Z</published>
+    <updated>2021-06-28T05:06:32.648Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今日内容：记录常用sql命令&lt;/p&gt;
+&lt;h1 id=&quot;数据库的基本概念&quot;&gt;&lt;a href=&quot;#数据库的基本概念&quot; class=&quot;headerlink&quot; title=&quot;数据库的基本概念&quot;&gt;&lt;/a&gt;数据库的基本概念&lt;/h1&gt;&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yangyangyin.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Sql" scheme="http://yangyangyin.top/tags/Sql/"/>
+    
+  </entry>
+  
+</feed>
