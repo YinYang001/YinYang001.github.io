@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangyangyin.top/"/>
-  <updated>2021-08-19T07:44:13.757Z</updated>
+  <updated>2021-08-19T09:21:00.744Z</updated>
   <id>http://yangyangyin.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Netty-NIO基础</title>
+    <link href="http://yangyangyin.top/posts/37846.html"/>
+    <id>http://yangyangyin.top/posts/37846.html</id>
+    <published>2021-08-19T08:56:28.000Z</published>
+    <updated>2021-08-19T09:21:00.744Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一-NIO-基础&quot;&gt;&lt;a href=&quot;#一-NIO-基础&quot; class=&quot;headerlink&quot; title=&quot;一. NIO 基础&quot;&gt;&lt;/a&gt;一. NIO 基础&lt;/h1&gt;&lt;p&gt;non-blocking io 非阻塞 IO&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="网络编程" scheme="http://yangyangyin.top/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="netty" scheme="http://yangyangyin.top/tags/netty/"/>
+    
+      <category term="nio" scheme="http://yangyangyin.top/tags/nio/"/>
+    
+  </entry>
   
   <entry>
     <title>区块链技术认知</title>
@@ -73,7 +102,7 @@
     <link href="http://yangyangyin.top/posts/47223.html"/>
     <id>http://yangyangyin.top/posts/47223.html</id>
     <published>2021-07-12T08:24:58.000Z</published>
-    <updated>2021-08-19T07:46:53.318Z</updated>
+    <updated>2021-08-19T08:57:19.077Z</updated>
     
     <summary type="html">
     
@@ -101,7 +130,7 @@
     <link href="http://yangyangyin.top/posts/22462.html"/>
     <id>http://yangyangyin.top/posts/22462.html</id>
     <published>2021-07-11T03:55:48.000Z</published>
-    <updated>2021-07-11T09:09:24.234Z</updated>
+    <updated>2021-08-19T08:57:28.164Z</updated>
     
     <summary type="html">
     
