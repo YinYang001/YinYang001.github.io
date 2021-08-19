@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangyangyin.top/"/>
-  <updated>2021-07-21T11:33:10.944Z</updated>
+  <updated>2021-08-19T07:44:13.757Z</updated>
   <id>http://yangyangyin.top/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>区块链技术认知</title>
+    <link href="http://yangyangyin.top/posts/48583.html"/>
+    <id>http://yangyangyin.top/posts/48583.html</id>
+    <published>2021-08-19T07:40:46.000Z</published>
+    <updated>2021-08-19T07:44:13.757Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;1-区块链与P2P&quot;&gt;&lt;a href=&quot;#1-区块链与P2P&quot; class=&quot;headerlink&quot; title=&quot;1. 区块链与P2P&quot;&gt;&lt;/a&gt;1. 区块链与P2P&lt;/h1&gt;&lt;h2 id=&quot;1-1-P2P网络概念&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="区块链学习之路" scheme="http://yangyangyin.top/categories/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>区块链概念认知--初步认识区块链</title>
     <link href="http://yangyangyin.top/posts/45753.html"/>
     <id>http://yangyangyin.top/posts/45753.html</id>
     <published>2021-07-20T14:32:13.000Z</published>
-    <updated>2021-07-21T11:33:10.944Z</updated>
+    <updated>2021-08-19T07:40:50.239Z</updated>
     
     <summary type="html">
     
@@ -49,7 +73,7 @@
     <link href="http://yangyangyin.top/posts/47223.html"/>
     <id>http://yangyangyin.top/posts/47223.html</id>
     <published>2021-07-12T08:24:58.000Z</published>
-    <updated>2021-07-12T08:43:35.974Z</updated>
+    <updated>2021-08-19T07:46:53.318Z</updated>
     
     <summary type="html">
     
@@ -66,7 +90,9 @@
       <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="队列 二叉堆" scheme="http://yangyangyin.top/tags/%E9%98%9F%E5%88%97-%E4%BA%8C%E5%8F%89%E5%A0%86/"/>
+      <category term="队列" scheme="http://yangyangyin.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二叉堆" scheme="http://yangyangyin.top/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/"/>
     
   </entry>
   
@@ -131,7 +157,7 @@
     <link href="http://yangyangyin.top/posts/43987.html"/>
     <id>http://yangyangyin.top/posts/43987.html</id>
     <published>2021-07-10T05:19:58.000Z</published>
-    <updated>2021-07-11T03:54:47.592Z</updated>
+    <updated>2021-08-19T07:45:46.478Z</updated>
     
     <summary type="html">
     
@@ -150,7 +176,9 @@
       <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="链表 迭代" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8-%E8%BF%AD%E4%BB%A3/"/>
+      <category term="链表" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="迭代" scheme="http://yangyangyin.top/tags/%E8%BF%AD%E4%BB%A3/"/>
     
   </entry>
   
@@ -159,7 +187,7 @@
     <link href="http://yangyangyin.top/posts/4493.html"/>
     <id>http://yangyangyin.top/posts/4493.html</id>
     <published>2021-07-10T02:31:01.000Z</published>
-    <updated>2021-07-11T03:54:56.333Z</updated>
+    <updated>2021-08-19T07:45:31.312Z</updated>
     
     <summary type="html">
     
@@ -177,7 +205,9 @@
       <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="递归 链表" scheme="http://yangyangyin.top/tags/%E9%80%92%E5%BD%92-%E9%93%BE%E8%A1%A8/"/>
+      <category term="链表" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="http://yangyangyin.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
