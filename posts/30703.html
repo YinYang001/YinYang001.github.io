@@ -500,7 +500,7 @@ for rapid development ">
             <div id="articleContent">
                 <h1 id="二-Netty-入门"><a href="#二-Netty-入门" class="headerlink" title="二. Netty 入门"></a>二. Netty 入门</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><h3 id="1-1-Netty-是什么？"><a href="#1-1-Netty-是什么？" class="headerlink" title="1.1 Netty 是什么？"></a>1.1 Netty 是什么？</h3><pre><code>Netty is an asynchronous event-driven network application framework
 for rapid development of maintainable high performance protocol servers &amp; clients.</code></pre><p>Netty 是一个异步的、基于事件驱动的网络应用框架，用于快速开发可维护、高性能的网络服务器和客户端</p>
-<h3 id="1-2-Netty-的作者"><a href="#1-2-Netty-的作者" class="headerlink" title="1.2 Netty 的作者"></a>1.2 Netty 的作者</h3><img src="/posts/undefined/0005.png">
+<h3 id="1-2-Netty-的作者"><a href="#1-2-Netty-的作者" class="headerlink" title="1.2 Netty 的作者"></a>1.2 Netty 的作者</h3><img src="/posts/30703/0005.png">
 
 <p>他还是另一个著名网络应用框架 Mina 的重要贡献者</p>
 <h3 id="1-3-Netty-的地位"><a href="#1-3-Netty-的地位" class="headerlink" title="1.3 Netty 的地位"></a>1.3 Netty 的地位</h3><p>Netty 在 Java 网络应用框架中的地位就好比：Spring 框架在 JavaEE 开发中的地位</p>
@@ -567,7 +567,7 @@ for rapid development of maintainable high performance protocol servers &amp; cl
 <li><p>1 处，创建 NioEventLoopGroup，可以简单理解为 <code>线程池 + Selector</code> 后面会详细展开</p>
 </li>
 <li><p>2 处，选择服务 Scoket 实现类，其中 NioServerSocketChannel 表示基于 NIO 的服务器端实现，其它实现还有</p>
-<img src="/posts/undefined/0006.png">
+<img src="/posts/30703/0006.png">
 </li>
 <li><p>3 处，为啥方法叫 childHandler，是接下来添加的处理器都是给 SocketChannel 用的，而不是给 ServerSocketChannel。ChannelInitializer 处理器（仅执行一次），它的作用是待客户端 SocketChannel 建立连接后，执行 initChannel 以便添加更多的处理器</p>
 </li>
@@ -596,7 +596,7 @@ for rapid development of maintainable high performance protocol servers &amp; cl
 <li><p>1 处，创建 NioEventLoopGroup，同 Server</p>
 </li>
 <li><p>2 处，选择客户 Socket 实现类，NioSocketChannel 表示基于 NIO 的客户端实现，其它实现还有</p>
-<img src="/posts/undefined/0007.png">
+<img src="/posts/30703/0007.png">
 </li>
 <li><p>3 处，添加 SocketChannel 的处理器，ChannelInitializer 处理器（仅执行一次），它的作用是待客户端 SocketChannel 建立连接后，执行 initChannel 以便添加更多的处理器</p>
 </li>
@@ -613,7 +613,7 @@ for rapid development of maintainable high performance protocol servers &amp; cl
 <li><p>数据经过网络传输，到达服务器端，服务器端 5 和 6 处的 handler 先后被触发，走完一个流程</p>
 </li>
 </ul>
-<h3 id="2-4-流程梳理"><a href="#2-4-流程梳理" class="headerlink" title="2.4 流程梳理"></a>2.4 流程梳理</h3><img src="/posts/undefined/0040.png">
+<h3 id="2-4-流程梳理"><a href="#2-4-流程梳理" class="headerlink" title="2.4 流程梳理"></a>2.4 流程梳理</h3><img src="/posts/30703/0040.png">
 
 <h4 id="💡-提示"><a href="#💡-提示" class="headerlink" title="💡 提示"></a>💡 提示</h4><blockquote>
 <p>一开始需要树立正确的观念</p>
@@ -715,7 +715,7 @@ io.netty.channel.DefaultEventLoop@35f983a6</code></pre><h4 id="💡-优雅关闭
 22:05:38 [DEBUG] [nioEventLoopGroup-3-2] c.i.o.EventLoopTest - lisi           
 22:06:09 [DEBUG] [nioEventLoopGroup-3-1] c.i.o.EventLoopTest - wangwu        
 22:06:11 [DEBUG] [nioEventLoopGroup-3-1] c.i.o.EventLoopTest - wangwu         </code></pre><p>可以看到两个工人轮流处理 channel，但工人与 channel 之间进行了绑定</p>
-<img src="/posts/undefined/0042.png">
+<img src="/posts/30703/0042.png">
 
 <p>再增加两个非 nio 工人</p>
 <pre class="line-numbers language-java"><code class="language-java">DefaultEventLoopGroup normalWorkers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultEventLoopGroup</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -796,7 +796,7 @@ io.netty.channel.DefaultEventLoop@35f983a6</code></pre><h4 id="💡-优雅关闭
 +--------+-------------------------------------------------+----------------+
 22:20:40 [DEBUG] [nioEventLoopGroup-4-1] i.n.h.l.LoggingHandler - [id: 0x79a26af9, L:/127.0.0.1:8080 - R:/127.0.0.1:52625] READ COMPLETE
 22:20:40 [DEBUG] [defaultEventLoopGroup-2-1] c.i.o.EventLoopTest - wangwu          </code></pre><p>可以看到，nio 工人和 非 nio 工人也分别绑定了 channel（LoggingHandler 由 nio 工人执行，而我们自己的 handler 由非 nio 工人执行）</p>
-<img src="/posts/undefined/0041.png">
+<img src="/posts/30703/0041.png">
 
 <p>关键代码 <code>io.netty.channel.AbstractChannelHandlerContext#invokeChannelRead()</code></p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">invokeChannelRead</span><span class="token punctuation">(</span><span class="token keyword">final</span> AbstractChannelHandlerContext next<span class="token punctuation">,</span> Object msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -984,7 +984,7 @@ channelFuture<span class="token punctuation">.</span><span class="token function
 </li>
 </ul>
 <p>思考下面的场景，4 个医生给人看病，每个病人花费 20 分钟，而且医生看病的过程中是以病人为单位的，一个病人看完了，才能看下一个病人。假设病人源源不断地来，可以计算一下 4 个医生一天工作 8 小时，处理的病人总数是：<code>4 * 8 * 3 = 96</code></p>
-<img src="/posts/undefined/0044.png">
+<img src="/posts/30703/0044.png">
 
 
 
@@ -1001,7 +1001,7 @@ channelFuture<span class="token punctuation">.</span><span class="token function
 
 
 <p>经研究发现，看病可以细分为四个步骤，经拆分后每个步骤需要 5 分钟，如下</p>
-<img src="/posts/undefined/0048.png">
+<img src="/posts/30703/0048.png">
 
 
 
@@ -1014,7 +1014,7 @@ channelFuture<span class="token punctuation">.</span><span class="token function
 
 
 <p>因此可以做如下优化，只有一开始，医生 2、3、4 分别要等待 5、10、15 分钟才能执行工作，但只要后续病人源源不断地来，他们就能够满负荷工作，并且处理病人的能力提高到了 <code>4 * 8 * 12</code> 效率几乎是原来的四倍</p>
-<img src="/posts/undefined/0047.png">
+<img src="/posts/30703/0047.png">
 
 <p>要点</p>
 <ul>
@@ -1367,7 +1367,7 @@ io.netty.util.concurrent.BlockingOperationException: DefaultPromise@47499c2a(inc
 6
 5
 4</code></pre><p>可以看到，ChannelInboundHandlerAdapter 是按照 addLast 的顺序执行的，而 ChannelOutboundHandlerAdapter 是按照 addLast 的逆序执行的。ChannelPipeline 的实现是一个 ChannelHandlerContext（包装了 ChannelHandler） 组成的双向链表</p>
-<img src="/posts/undefined/0008.png">
+<img src="/posts/30703/0008.png">
 
 <ul>
 <li>入站处理器中，ctx.fireChannelRead(msg) 是 <strong>调用下一个入站处理器</strong><ul>
@@ -1393,7 +1393,7 @@ io.netty.util.concurrent.BlockingOperationException: DefaultPromise@47499c2a(inc
 </li>
 </ul>
 <p>图1 - 服务端 pipeline 触发的原始流程，图中数字代表了处理步骤的先后次序</p>
-<img src="/posts/undefined/0009.png">
+<img src="/posts/30703/0009.png">
 
 <h3 id="3-5-ByteBuf"><a href="#3-5-ByteBuf" class="headerlink" title="3.5 ByteBuf"></a>3.5 ByteBuf</h3><p>是对字节数据的封装</p>
 <h4 id="1）创建"><a href="#1）创建" class="headerlink" title="1）创建"></a>1）创建</h4><pre class="line-numbers language-java"><code class="language-java">ByteBuf buffer <span class="token operator">=</span> ByteBufAllocator<span class="token punctuation">.</span>DEFAULT<span class="token punctuation">.</span><span class="token function">buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1656,7 +1656,7 @@ read index:8 write index:12 capacity:16
     <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="9）slice"><a href="#9）slice" class="headerlink" title="9）slice"></a>9）slice</h4><p>【零拷贝】的体现之一，对原始 ByteBuf 进行切片成多个 ByteBuf，切片后的 ByteBuf 并没有发生内存复制，还是使用原始 ByteBuf 的内存，切片后的 ByteBuf 维护独立的 read，write 指针</p>
-<img src="/posts/undefined/0011.png">
+<img src="/posts/30703/0011.png">
 
 <p>例，原始 ByteBuf 进行一些初始操作</p>
 <pre class="line-numbers language-java"><code class="language-java">ByteBuf origin <span class="token operator">=</span> ByteBufAllocator<span class="token punctuation">.</span>DEFAULT<span class="token punctuation">.</span><span class="token function">buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1707,7 +1707,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 +--------+-------------------------------------------------+----------------+
 |00000000| 03 05                                           |..              |
 +--------+-------------------------------------------------+----------------+</code></pre><h4 id="10）duplicate"><a href="#10）duplicate" class="headerlink" title="10）duplicate"></a>10）duplicate</h4><p>【零拷贝】的体现之一，就好比截取了原始 ByteBuf 所有内容，并且没有 max capacity 的限制，也是与原始 ByteBuf 使用同一块底层内存，只是读写指针是独立的</p>
-<img src="/posts/undefined/0012.png">
+<img src="/posts/30703/0012.png">
 
 <h4 id="11）copy"><a href="#11）copy" class="headerlink" title="11）copy"></a>11）copy</h4><p>会将底层内存数据进行深拷贝，因此无论读写，都与原始 ByteBuf 无关</p>
 <h4 id="12）CompositeByteBuf"><a href="#12）CompositeByteBuf" class="headerlink" title="12）CompositeByteBuf"></a>12）CompositeByteBuf</h4><p>【零拷贝】的体现之一，可以将多个 ByteBuf 合并为一个逻辑上的 ByteBuf，避免拷贝</p>
