@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangyangyin.top/"/>
-  <updated>2021-08-19T09:21:15.777Z</updated>
+  <updated>2021-08-24T00:41:43.713Z</updated>
   <id>http://yangyangyin.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>netty-入门</title>
+    <link href="http://yangyangyin.top/posts/30703.html"/>
+    <id>http://yangyangyin.top/posts/30703.html</id>
+    <published>2021-08-24T00:05:24.000Z</published>
+    <updated>2021-08-24T00:41:43.713Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;二-Netty-入门&quot;&gt;&lt;a href=&quot;#二-Netty-入门&quot; class=&quot;headerlink&quot; title=&quot;二. Netty 入门&quot;&gt;&lt;/a&gt;二. Netty 入门&lt;/h1&gt;&lt;h2 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="网络编程" scheme="http://yangyangyin.top/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Netty" scheme="http://yangyangyin.top/tags/Netty/"/>
+    
+  </entry>
   
   <entry>
     <title>Netty-NIO基础</title>
