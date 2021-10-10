@@ -493,7 +493,7 @@
 
 <span class="token list punctuation">-</span> 所谓文件的meta data就是文件的相关属性，以键值对（key value pair）方式表示，如：width=1024，其中的key为width，value为1024。文件meta data是文件属性列表，可以包含多个键值对。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>FastDFS系统系统架构图如下: </p>
-<img src="/posts/undefined/1.png">
+<img src="/posts/29816/1.png">
 
 <p><code>图解</code>:</p>
 <ul>
@@ -507,7 +507,7 @@
 </li>
 </ul>
 <p><strong>FastDFS中的文件标识分为两个部分：卷名和文件名，二者缺一不可。</strong></p>
-<img src="/posts/undefined/2.png">
+<img src="/posts/29816/2.png">
 
 <blockquote>
 <p>上传文件交互过程：</p>
@@ -521,7 +521,7 @@
 </li>
 </ol>
 </blockquote>
-<img src="/posts/undefined/3.png">
+<img src="/posts/29816/3.png">
 
 <blockquote>
 <p>下载文件交互过程：</p>
@@ -539,7 +539,7 @@
 <h2 id="二、Docker部署Fastdfs"><a href="#二、Docker部署Fastdfs" class="headerlink" title="二、Docker部署Fastdfs"></a>二、Docker部署Fastdfs</h2><h2 id="三、Java-Api"><a href="#三、Java-Api" class="headerlink" title="三、Java Api"></a>三、Java Api</h2><p>提取码：1314 </p>
 <h3 id="1-依赖配置"><a href="#1-依赖配置" class="headerlink" title="1.依赖配置"></a>1.依赖配置</h3><p>  可以将网盘里的 文件把org这个文件夹复制到自己的项目中</p>
 <p> 再copy配置文件，后缀名改为fastdfs-client.properties;</p>
-<img src="/posts/undefined/4.png">
+<img src="/posts/29816/4.png">
 
 <p><strong>导入成功后可以使用fastdfs相关api</strong></p>
 <h3 id="2-上传文件"><a href="#2-上传文件" class="headerlink" title="2. 上传文件"></a>2. 上传文件</h3><pre class="line-numbers language-java"><code class="language-java"> <span class="token comment" spellcheck="true">//上传    /var/fdfs/data/00/00</span>
@@ -570,10 +570,10 @@
     <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>运行成功后</code>; 卷名+文件唯一标识名</p>
-<img src="/posts/undefined/5.png">
+<img src="/posts/29816/5.png">
 
 <p>可在docker里的fastdfs查看上传的文件</p>
-<img src="/posts/undefined/6.png">
+<img src="/posts/29816/6.png">
 
 <p>一个是上传的文件，一个是元文件，记录着元数据</p>
 <h3 id="3-下载文件"><a href="#3-下载文件" class="headerlink" title="3. 下载文件"></a>3. 下载文件</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//下载</span>
@@ -675,7 +675,7 @@
     <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>大致这么多api，结果如下:</p>
-<img src="/posts/undefined/7.png">
+<img src="/posts/29816/7.png">
 
 <h4 id="4-2-下载文件"><a href="#4-2-下载文件" class="headerlink" title="4.2 下载文件"></a>4.2 下载文件</h4><pre class="line-numbers language-java"><code class="language-java"> <span class="token comment" spellcheck="true">//group1/M00/00/00/rBEABmFhkIWAC4b5AAnTgVFdm_g687.log</span>
     <span class="token comment" spellcheck="true">//group1</span>
@@ -686,7 +686,7 @@
         <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"d:\\aa.log"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span> bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>成功后:</p>
-<img src="/posts/undefined/8.png">
+<img src="/posts/29816/8.png">
 
 <h4 id="4-3-获取元数据"><a href="#4-3-获取元数据" class="headerlink" title="4.3 获取元数据"></a>4.3 获取元数据</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//获取元数据</span>
     <span class="token annotation punctuation">@Test</span>
@@ -696,7 +696,7 @@
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>mataData<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" value: "</span><span class="token operator">+</span>mataData<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/undefined/9.png">
+<img src="/posts/29816/9.png">
 
 <h2 id="五、文件去重"><a href="#五、文件去重" class="headerlink" title="五、文件去重"></a>五、文件去重</h2><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token list punctuation">-</span> 由于FastDFS本身不能对重复上传的文件进行去重，而FastDHT可以做到去重。
 <span class="token list punctuation">-</span> FastDHT是一个高性能的分布式哈希系统，它是基于键值对存储的，而且它需要依赖于Berkeley DB作为数据存储的媒介，使用libevent做网络IO处理。同时需要依赖于libfastcommon。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -717,7 +717,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<img src="/posts/undefined/10.png">
+<img src="/posts/29816/10.png">
 
 <p><code>图解:</code></p>
 <ol>
