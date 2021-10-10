@@ -320,7 +320,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -436,11 +436,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/结构型模式/" target="_blank">
+                            <span class="chip bg-color">结构型模式</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/设计模式/" class="post-category" target="_blank">
+                            设计模式
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -508,7 +521,7 @@
 <h3 id="5-1-3-静态代理"><a href="#5-1-3-静态代理" class="headerlink" title="5.1.3 静态代理"></a>5.1.3 静态代理</h3><p>我们通过案例来感受一下静态代理。</p>
 <p>【例】火车站卖票</p>
 <p>如果要买火车票的话，需要去火车站买票，坐车到火车站，排队等一系列的操作，显然比较麻烦。而火车站在多个地方都有代售点，我们去代售点买票就方便很多了。这个例子其实就是典型的代理模式，火车站是目标对象，代售点是代理对象。类图如下：</p>
-<img src="/posts/undefined/静态代理.png">
+<img src="/posts/36844/静态代理.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//卖票接口</span>
@@ -855,7 +868,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </li>
 </ul>
 <h2 id="5-2-适配器模式"><a href="#5-2-适配器模式" class="headerlink" title="5.2 适配器模式"></a>5.2 适配器模式</h2><h3 id="5-2-1-概述"><a href="#5-2-1-概述" class="headerlink" title="5.2.1 概述"></a>5.2.1 概述</h3><p>如果去欧洲国家去旅游的话，他们的插座如下图最左边，是欧洲标准。而我们使用的插头如下图最右边的。因此我们的笔记本电脑，手机在当地不能直接充电。所以就需要一个插座转换器，转换器第1面插入当地的插座，第2面供我们充电，这样使得我们的插头在当地能使用。生活中这样的例子很多，手机充电器（将220v转换为5v的电压），读卡器等，其实就是使用到了适配器模式。</p>
-<img src="/posts/undefined/转接头.png">
+<img src="/posts/36844/转接头.png">
 
 <p><strong>定义：</strong></p>
 <p>​    将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作。</p>
@@ -870,7 +883,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <p>【例】读卡器</p>
 <p>现有一台电脑只能读取SD卡，而要读取TF卡中的内容的话就需要使用到适配器模式。创建一个读卡器，将TF卡中的内容读取出来。</p>
 <p>类图如下：</p>
-<img src="/posts/undefined/适配器模式.png">
+<img src="/posts/36844/适配器模式.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//SD卡的接口</span>
@@ -956,7 +969,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <h3 id="5-2-4-对象适配器模式"><a href="#5-2-4-对象适配器模式" class="headerlink" title="5.2.4 对象适配器模式"></a>5.2.4 对象适配器模式</h3><p>实现方式：对象适配器模式可釆用将现有组件库中已经实现的组件引入适配器类中，该类同时实现当前系统的业务接口。</p>
 <p>【例】读卡器</p>
 <p>我们使用对象适配器模式将读卡器的案例进行改写。类图如下：</p>
-<img src="/posts/undefined/对象适配器模式.png">
+<img src="/posts/36844/对象适配器模式.png">
 
 <p>代码如下：</p>
 <p>类适配器模式的代码，我们只需要修改适配器类（SDAdapterTF）和测试类。</p>
@@ -1011,7 +1024,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
     <span class="token keyword">return</span> sd<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>cbuf<span class="token punctuation">,</span> offset<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如上代码中的sd（StreamDecoder类对象），在Sun的JDK实现中，实际的方法实现是对sun.nio.cs.StreamDecoder类的同名方法的调用封装。类结构图如下：</p>
-<img src="/posts/undefined/适配器模式-jdk源码解析.png">
+<img src="/posts/36844/适配器模式-jdk源码解析.png">
 
 <p>从上图可以看出：</p>
 <ul>
@@ -1022,7 +1035,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <p>​    从表层来看，InputStreamReader做了InputStream字节流类到Reader字符流之间的转换。而从如上Sun JDK中的实现类关系结构中可以看出，是StreamDecoder的设计实现在实际上采用了适配器模式。</p>
 <h2 id="5-3-装饰者模式"><a href="#5-3-装饰者模式" class="headerlink" title="5.3 装饰者模式"></a>5.3 装饰者模式</h2><h3 id="5-3-1-概述"><a href="#5-3-1-概述" class="headerlink" title="5.3.1 概述"></a>5.3.1 概述</h3><p>我们先来看一个快餐店的例子。</p>
 <p>快餐店有炒面、炒饭这些快餐，可以额外附加鸡蛋、火腿、培根这些配菜，当然加配菜需要额外加钱，每个配菜的价钱通常不太一样，那么计算总价就会显得比较麻烦。</p>
-<img src="/posts/undefined/装饰者模式-使用前.png">
+<img src="/posts/36844/装饰者模式-使用前.png">
 
 <p>使用继承的方式存在的问题：</p>
 <ul>
@@ -1043,7 +1056,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </ul>
 <h3 id="5-3-3-案例"><a href="#5-3-3-案例" class="headerlink" title="5.3.3 案例"></a>5.3.3 案例</h3><p>我们使用装饰者模式对快餐店案例进行改进，体会装饰者模式的精髓。</p>
 <p>类图如下：</p>
-<img src="/posts/undefined/装饰者模式.png">
+<img src="/posts/36844/装饰者模式.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//快餐接口</span>
@@ -1217,7 +1230,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用起来感觉确实像是装饰者模式，接下来看它们的结构：</p>
-<img src="/posts/undefined/装饰者模式-jdk源码.png">
+<img src="/posts/36844/装饰者模式-jdk源码.png">
 
 <blockquote>
 <p><font color="red">小结：</font></p>
@@ -1238,7 +1251,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </li>
 </ul>
 <h2 id="5-4-桥接模式"><a href="#5-4-桥接模式" class="headerlink" title="5.4 桥接模式"></a>5.4 桥接模式</h2><h3 id="5-4-1-概述"><a href="#5-4-1-概述" class="headerlink" title="5.4.1 概述"></a>5.4.1 概述</h3><p>现在有一个需求，需要创建不同的图形，并且每个图形都有可能会有不同的颜色。我们可以利用继承的方式来设计类的关系：</p>
-<img src="/posts/undefined/image-20200207194617620.png">
+<img src="/posts/36844/image-20200207194617620.png">
 
 <p>我们可以发现有很多的类，假如我们再增加一个形状或再增加一种颜色，就需要创建更多的类。</p>
 <p>试想，在一个有多种可能会变化的维度的系统中，用继承方式会造成类爆炸，扩展起来不灵活。每次在一个维度上新增一个具体实现都要增加多个子类。为了更加灵活的设计系统，我们此时可以考虑使用桥接模式。</p>
@@ -1254,7 +1267,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <h3 id="5-4-3-案例"><a href="#5-4-3-案例" class="headerlink" title="5.4.3 案例"></a>5.4.3 案例</h3><p>【例】视频播放器</p>
 <p>需要开发一个跨平台视频播放器，可以在不同操作系统平台（如Windows、Mac、Linux等）上播放多种格式的视频文件，常见的视频格式包括RMVB、AVI、WMV等。该播放器包含了两个维度，适合使用桥接模式。</p>
 <p>类图如下：</p>
-<img src="/posts/undefined/桥接模式.png">
+<img src="/posts/36844/桥接模式.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//视频文件</span>
@@ -1337,7 +1350,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <p><strong>定义：</strong></p>
 <p>​    又名门面模式，是一种通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</p>
 <p>​    外观（Facade）模式是“迪米特法则”的典型应用</p>
-<img src="/posts/undefined/外观模式引入.jpg">
+<img src="/posts/36844/外观模式引入.jpg">
 
 
 
@@ -1348,7 +1361,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </ul>
 <h3 id="5-5-3-案例"><a href="#5-5-3-案例" class="headerlink" title="5.5.3 案例"></a>5.5.3 案例</h3><p>【例】智能家电控制</p>
 <p>小明的爷爷已经60岁了，一个人在家生活：每次都需要打开灯、打开电视、打开空调；睡觉时关闭灯、关闭电视、关闭空调；操作起来都比较麻烦。所以小明给爷爷买了智能音箱，可以通过语音直接控制这些智能家电的开启和关闭。类图如下：</p>
-<img src="/posts/undefined/外观模式.png">
+<img src="/posts/36844/外观模式.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//灯类</span>
@@ -1449,16 +1462,16 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <li>当客户端与多个子系统之间存在很大的联系时，引入外观模式可将它们分离，从而提高子系统的独立性和可移植性。</li>
 </ul>
 <h3 id="5-5-5-源码解析"><a href="#5-5-5-源码解析" class="headerlink" title="5.5.5 源码解析"></a>5.5.5 源码解析</h3><p>使用tomcat作为web容器时，接收浏览器发送过来的请求，tomcat会将请求信息封装成ServletRequest对象，如下图①处对象。但是大家想想ServletRequest是一个接口，它还有一个子接口HttpServletRequest，而我们知道该request对象肯定是一个HttpServletRequest对象的子实现类对象，到底是哪个类的对象呢？可以通过输出request对象，我们就会发现是一个名为RequestFacade的类的对象。</p>
-<img src="/posts/undefined/image-20200207234545691.png">
+<img src="/posts/36844/image-20200207234545691.png">
 
 <p>RequestFacade类就使用了外观模式。先看结构图：</p>
-<img src="/posts/undefined/外观模式-jdk源码解析.png">
+<img src="/posts/36844/外观模式-jdk源码解析.png">
 
 
 
 <p><strong>为什么在此处使用外观模式呢？</strong></p>
 <p>​    定义 RequestFacade 类，分别实现 ServletRequest ，同时定义私有成员变量 Request ，并且方法的实现调用 Request  的实现。然后，将 RequestFacade上转为 ServletRequest  传给 servlet 的 service 方法，这样即使在 servlet 中被下转为 RequestFacade ，也不能访问私有成员变量对象中的方法。既用了 Request ，又能防止其中方法被不合理的访问。</p>
-<h2 id="5-6-组合模式"><a href="#5-6-组合模式" class="headerlink" title="5.6 组合模式"></a>5.6 组合模式</h2><h3 id="5-6-1-概述"><a href="#5-6-1-概述" class="headerlink" title="5.6.1 概述"></a>5.6.1 概述</h3><img src="/posts/undefined/image-20200208180417291.png">
+<h2 id="5-6-组合模式"><a href="#5-6-组合模式" class="headerlink" title="5.6 组合模式"></a>5.6 组合模式</h2><h3 id="5-6-1-概述"><a href="#5-6-1-概述" class="headerlink" title="5.6.1 概述"></a>5.6.1 概述</h3><img src="/posts/36844/image-20200208180417291.png">
 
 <p>​    对于这个图片肯定会非常熟悉，上图我们可以看做是一个文件系统，对于这样的结构我们称之为树形结构。在树形结构中可以通过调用某个方法来遍历整个树，当我们找到某个叶子节点后，就可以对叶子节点进行相关的操作。可以将这颗树理解成一个大的容器，容器里面包含很多的成员对象，这些成员对象即可是容器对象也可以是叶子对象。但是由于容器对象和叶子对象在功能上面的区别，使得我们在使用的过程中必须要区分容器对象和叶子对象，但是这样就会给客户带来不必要的麻烦，作为客户而已，它始终希望能够一致的对待容器对象和叶子对象。</p>
 <p><strong>定义：</strong></p>
@@ -1471,10 +1484,10 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </ul>
 <h3 id="5-6-3-案例实现"><a href="#5-6-3-案例实现" class="headerlink" title="5.6.3 案例实现"></a>5.6.3 案例实现</h3><p>【例】软件菜单</p>
 <p>如下图，我们在访问别的一些管理系统时，经常可以看到类似的菜单。一个菜单可以包含菜单项（菜单项是指不再包含其他内容的菜单条目），也可以包含带有其他菜单项的菜单，因此使用组合模式描述菜单就很恰当，我们的需求是针对一个菜单，打印出其包含的所有菜单以及菜单项的名称。</p>
-<img src="/posts/undefined/image-20200208182322313.png">
+<img src="/posts/36844/image-20200208182322313.png">
 
 <p>要实现该案例，我们先画出类图：</p>
-<img src="/posts/undefined/组合模式.png">
+<img src="/posts/36844/组合模式.png">
 
 <p><strong>代码实现：</strong></p>
 <p>不管是菜单还是菜单项，都应该继承自统一的接口，这里姑且将这个统一的接口称为菜单组件。</p>
@@ -1571,7 +1584,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </li>
 <li><p>安全组合模式</p>
 <p>在安全组合模式中，在抽象构件角色中没有声明任何用于管理成员对象的方法，而是在树枝节点 <code>Menu</code> 类中声明并实现这些方法。安全组合模式的缺点是不够透明，因为叶子构件和容器构件具有不同的方法，且容器构件中那些用于管理成员对象的方法没有在抽象构件类中定义，因此客户端不能完全针对抽象编程，必须有区别地对待叶子构件和容器构件。</p>
-<img src="/posts/undefined/组合模式-安全性.png">
+<img src="/posts/36844/组合模式-安全性.png">
 
 
 
@@ -1600,12 +1613,12 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 </ul>
 <h3 id="5-7-3-案例实现"><a href="#5-7-3-案例实现" class="headerlink" title="5.7.3 案例实现"></a>5.7.3 案例实现</h3><p>【例】俄罗斯方块</p>
 <p>下面的图片是众所周知的俄罗斯方块中的一个个方块，如果在俄罗斯方块这个游戏中，每个不同的方块都是一个实例对象，这些对象就要占用很多的内存空间，下面利用享元模式进行实现。</p>
-<img src="/posts/undefined/俄罗斯方块.jpeg">
+<img src="/posts/36844/俄罗斯方块.jpeg">
 
 
 
 <p><strong>先来看类图：</strong></p>
-<img src="/posts/undefined/享元模式.png">
+<img src="/posts/36844/享元模式.png">
 
 <p><strong>代码如下：</strong></p>
 <p>俄罗斯方块有不同的形状，我们可以对这些形状向上抽取出AbstractBox，用来定义共性的属性和行为。</p>
@@ -2227,37 +2240,35 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/36844.html">
+                <a href="/posts/29816.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="结构型模式">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="FastDfs知识点总结">
                         
-                        <span class="card-title">结构型模式</span>
+                        <span class="card-title">FastDfs知识点总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            5，结构型模式结构型模式描述如何将类或对象按某种布局组成更大的结构。它分为类结构型模式和对象结构型模式，前者采用继承机制来组织接口和类，后者釆用组合或聚合来组合对象。
-由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象
+                            一、FastDfS重要概念整理* FastDFS是一个开源的分布式文件系统，对文件进行管理
+- 功能包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了大容量存储和负载均衡的问题。特别适合以文件为载体的在线服务，如相册网站、视
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-09
+                        </span>
                         <span class="publish-author">
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -2272,7 +2283,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="行为型模式">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="行为型模式">
                         
                         <span class="card-title">行为型模式</span>
                     </div>
@@ -2441,7 +2452,7 @@ CGLIB是第三方提供的包，所以需要引入jar包的坐标：
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">124.1k</span>
+            <span class="white-color">125.9k</span>
             
 
             <br>
