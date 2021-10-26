@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangyangyin.top/"/>
-  <updated>2021-10-10T03:15:43.410Z</updated>
+  <updated>2021-10-26T02:53:19.216Z</updated>
   <id>http://yangyangyin.top/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringcloudAlibaba</title>
+    <link href="http://yangyangyin.top/posts/61861.html"/>
+    <id>http://yangyangyin.top/posts/61861.html</id>
+    <published>2021-10-26T02:40:54.000Z</published>
+    <updated>2021-10-26T02:53:19.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Spring-Cloud-Alibaba-微服工具集&quot;&gt;&lt;a href=&quot;#Spring-Cloud-Alibaba-微服工具集&quot; class=&quot;headerlink&quot; title=&quot;Spring Cloud Alibaba 微服工具集&quot;&gt;&lt;/a&gt;Spring
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="springcloudAlibaba" scheme="http://yangyangyin.top/tags/springcloudAlibaba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>elasticsearch-笔记</title>
+    <link href="http://yangyangyin.top/posts/1472.html"/>
+    <id>http://yangyangyin.top/posts/1472.html</id>
+    <published>2021-10-26T01:32:13.000Z</published>
+    <updated>2021-10-26T01:58:26.507Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;0-学习目标&quot;&gt;&lt;a href=&quot;#0-学习目标&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Elasticsearch" scheme="http://yangyangyin.top/tags/Elasticsearch/"/>
+    
+  </entry>
   
   <entry>
     <title>FastDfs知识点总结</title>
@@ -495,67 +547,6 @@
     
     
       <category term="redis" scheme="http://yangyangyin.top/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis分布式缓存</title>
-    <link href="http://yangyangyin.top/posts/34809.html"/>
-    <id>http://yangyangyin.top/posts/34809.html</id>
-    <published>2021-06-09T09:22:31.000Z</published>
-    <updated>2021-06-28T05:02:48.442Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;redis中分布式缓存实现&quot;&gt;&lt;a href=&quot;#redis中分布式缓存实现&quot; class=&quot;headerlink&quot; title=&quot;redis中分布式缓存实现&quot;&gt;&lt;/a&gt;redis中分布式缓存实现&lt;/h2&gt;&lt;h3 id=&quot;1-问题思考&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="redis" scheme="http://yangyangyin.top/categories/redis/"/>
-    
-    
-      <category term="redis" scheme="http://yangyangyin.top/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JWT实战教程</title>
-    <link href="http://yangyangyin.top/posts/39108.html"/>
-    <id>http://yangyangyin.top/posts/39108.html</id>
-    <published>2021-06-02T09:43:09.000Z</published>
-    <updated>2021-06-27T10:36:26.897Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;JWT-实战教程&quot;&gt;&lt;a href=&quot;#JWT-实战教程&quot; class=&quot;headerlink&quot; title=&quot;JWT 实战教程&quot;&gt;&lt;/a&gt;JWT 实战教程&lt;/h1&gt;
-
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2 id=&quot;1-什么是JWT&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="token" scheme="http://yangyangyin.top/categories/token/"/>
-    
-      <category term="认证" scheme="http://yangyangyin.top/categories/token/%E8%AE%A4%E8%AF%81/"/>
-    
-      <category term="学习笔记" scheme="http://yangyangyin.top/categories/token/%E8%AE%A4%E8%AF%81/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JWT" scheme="http://yangyangyin.top/tags/JWT/"/>
-    
-      <category term="令牌" scheme="http://yangyangyin.top/tags/%E4%BB%A4%E7%89%8C/"/>
     
   </entry>
   
