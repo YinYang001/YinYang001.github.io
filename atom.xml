@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangyangyin.top/"/>
-  <updated>2021-10-28T11:59:42.518Z</updated>
+  <updated>2021-11-16T04:58:13.854Z</updated>
   <id>http://yangyangyin.top/</id>
   
   <author>
@@ -17,11 +17,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据库知识点整理---持续更新</title>
+    <link href="http://yangyangyin.top/posts/57626.html"/>
+    <id>http://yangyangyin.top/posts/57626.html</id>
+    <published>2021-11-10T04:51:30.000Z</published>
+    <updated>2021-11-16T04:58:13.854Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;东拼西凑………..&lt;/p&gt;
+&lt;h2 id=&quot;1-索引的本质&quot;&gt;&lt;a href=&quot;#1-索引的本质&quot; class=&quot;headerlink&quot; title=&quot;1. 索引的本质&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数据库相关概念" scheme="http://yangyangyin.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统知识点整理--持续更新增加</title>
+    <link href="http://yangyangyin.top/posts/62405.html"/>
+    <id>http://yangyangyin.top/posts/62405.html</id>
+    <published>2021-11-09T13:53:39.000Z</published>
+    <updated>2021-11-16T04:58:16.991Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-总线&quot;&gt;&lt;a href=&quot;#1-总线&quot; class=&quot;headerlink&quot; title=&quot;1. 总线&quot;&gt;&lt;/a&gt;1. 总线&lt;/h2&gt;&lt;h3 id=&quot;1-1-5种分类&quot;&gt;&lt;a href=&quot;#1-1-5种分类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yangyangyin.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="操作系统" scheme="http://yangyangyin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>单例模式与原型模式</title>
     <link href="http://yangyangyin.top/posts/18209.html"/>
     <id>http://yangyangyin.top/posts/18209.html</id>
     <published>2021-10-28T11:51:53.000Z</published>
-    <updated>2021-10-28T11:59:42.518Z</updated>
+    <updated>2021-10-28T11:59:58.602Z</updated>
     
     <summary type="html">
     
@@ -179,7 +232,7 @@
     <link href="http://yangyangyin.top/posts/19391.html"/>
     <id>http://yangyangyin.top/posts/19391.html</id>
     <published>2021-09-15T02:02:09.000Z</published>
-    <updated>2021-09-15T02:40:34.302Z</updated>
+    <updated>2021-11-12T01:55:55.646Z</updated>
     
     <summary type="html">
     
@@ -492,65 +545,6 @@
     
     
       <category term="回文" scheme="http://yangyangyin.top/tags/%E5%9B%9E%E6%96%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分组反转链表（迭代实现）</title>
-    <link href="http://yangyangyin.top/posts/43987.html"/>
-    <id>http://yangyangyin.top/posts/43987.html</id>
-    <published>2021-07-10T05:19:58.000Z</published>
-    <updated>2021-08-19T07:45:46.478Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;反转整个链表不是难事，分区间反转也不在话下&lt;/p&gt;
-&lt;p&gt;那如果是将链表分组反转，怎么实现呢？&lt;/p&gt;
-&lt;h2 id=&quot;1-题目&quot;&gt;&lt;a href=&quot;#1-题目&quot; class=&quot;headerlink&quot; title=&quot;1. 题目&quot;&gt;&lt;/a&gt;1.
-        
-      
-    
-    </summary>
-    
-      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="链表" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="迭代" scheme="http://yangyangyin.top/tags/%E8%BF%AD%E4%BB%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反转链表--一看就懂（递归）</title>
-    <link href="http://yangyangyin.top/posts/4493.html"/>
-    <id>http://yangyangyin.top/posts/4493.html</id>
-    <published>2021-07-10T02:31:01.000Z</published>
-    <updated>2021-08-19T07:45:31.312Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;反转单链表的迭代实现不是一个困难的事情，但是递归实现就有点难度了，如果再加一点难度，仅仅反转单链表中的一部分，而不是全部反转，应该怎么实现呢??&lt;/p&gt;
-&lt;h2 id=&quot;1-反转整个单链表&quot;&gt;&lt;a href=&quot;#1-反转整个单链表&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法学习之路" scheme="http://yangyangyin.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="链表" scheme="http://yangyangyin.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="递归" scheme="http://yangyangyin.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   

@@ -320,7 +320,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -682,7 +682,7 @@
 <p>从上面代码可以看到，无参的 <code>read()</code> 方法是抽象方法，要求子类必须实现。而 <code>read(byte b[])</code> 方法调用了 <code>read(byte b[], int off, int len)</code> 方法，所以在此处重点看的方法是带三个参数的方法。 </p>
 <p>在该方法中第18行、27行，可以看到调用了无参的抽象的 <code>read()</code> 方法。</p>
 <p>总结如下： 在InputStream父类中已经定义好了读取一个字节数组数据的方法是每次读取一个字节，并将其存储到数组的第一个索引位置，读取len个字节数据。具体如何读取一个字节数据呢？由子类实现。</p>
-<h3 id="6-2-1-概述"><a href="#6-2-1-概述" class="headerlink" title="6.2.1 概述"></a>6.2.1 概述</h3><p>先看下面的图片，我们去旅游选择出行模式有很多种，可以骑自行车、可以坐汽车、可以坐火车、可以坐飞机。</p>
+<h2 id="6-2-策略模式"><a href="#6-2-策略模式" class="headerlink" title="6.2 策略模式"></a>6.2 策略模式</h2><h3 id="6-2-1-概述"><a href="#6-2-1-概述" class="headerlink" title="6.2.1 概述"></a>6.2.1 概述</h3><p>先看下面的图片，我们去旅游选择出行模式有很多种，可以骑自行车、可以坐汽车、可以坐火车、可以坐飞机。</p>
 <img src="/posts/19391/image-20200210143039168.png">
 
 <p>作为一个程序猿，开发需要选择一款开发工具，当然可以进行代码开发的工具有很多，可以选择Idea进行开发，也可以使用eclipse进行开发，也可以使用其他的一些开发工具。</p>
@@ -1300,7 +1300,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h2 id="6-2-策略模式"><a href="#6-2-策略模式" class="headerlink" title="6.2 策略模式"></a>6.2 策略模式</h2><h2 id="6-5-状态模式"><a href="#6-5-状态模式" class="headerlink" title="6.5 状态模式"></a>6.5 状态模式</h2><h3 id="6-5-1-概述"><a href="#6-5-1-概述" class="headerlink" title="6.5.1 概述"></a>6.5.1 概述</h3><p>【例】通过按钮来控制一个电梯的状态，一个电梯有开门状态，关门状态，停止状态，运行状态。每一种状态改变，都有可能要根据其他状态来更新处理。例如，如果电梯门现在处于运行时状态，就不能进行开门操作，而如果电梯门是停止状态，就可以执行开门操作。</p>
+<h2 id="6-5-状态模式"><a href="#6-5-状态模式" class="headerlink" title="6.5 状态模式"></a>6.5 状态模式</h2><h3 id="6-5-1-概述"><a href="#6-5-1-概述" class="headerlink" title="6.5.1 概述"></a>6.5.1 概述</h3><p>【例】通过按钮来控制一个电梯的状态，一个电梯有开门状态，关门状态，停止状态，运行状态。每一种状态改变，都有可能要根据其他状态来更新处理。例如，如果电梯门现在处于运行时状态，就不能进行开门操作，而如果电梯门是停止状态，就可以执行开门操作。</p>
 <p>类图如下：</p>
 <img src="/posts/19391/状态模式前.png">
 
@@ -3311,7 +3311,7 @@ value ::= integer</code></pre><blockquote>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="结构型模式">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="结构型模式">
                         
                         <span class="card-title">结构型模式</span>
                     </div>
@@ -3361,7 +3361,7 @@ value ::= integer</code></pre><blockquote>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="代理模式与装饰者模式">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="代理模式与装饰者模式">
                         
                         <span class="card-title">代理模式与装饰者模式</span>
                     </div>
@@ -3530,7 +3530,7 @@ Java中的代理按照代理类生成时机不同又分为静态代理和动态�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">163.6k</span>
+            <span class="white-color">176.9k</span>
             
 
             <br>

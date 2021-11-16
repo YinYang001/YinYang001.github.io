@@ -320,7 +320,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -975,7 +975,7 @@
 <li>访问类：使用具体原型类中的 clone() 方法来复制新的对象。</li>
 </ul>
 <p>接口类图如下：</p>
-<img src="/posts/undefined/原型模式.png">
+<img src="/posts/18209/原型模式.png">
 
 <h3 id="4-3-3-实现"><a href="#4-3-3-实现" class="headerlink" title="4.3.3 实现"></a>4.3.3 实现</h3><p>原型模式的克隆分为浅克隆和深克隆。</p>
 <blockquote>
@@ -1008,7 +1008,7 @@
 <h3 id="4-3-4-案例"><a href="#4-3-4-案例" class="headerlink" title="4.3.4 案例"></a>4.3.4 案例</h3><p><strong>用原型模式生成“三好学生”奖状</strong></p>
 <p>同一学校的“三好学生”奖状除了获奖人姓名不同，其他都相同，可以使用原型模式复制多个“三好学生”奖状出来，然后在修改奖状上的名字即可。</p>
 <p>类图如下：</p>
-<img src="/posts/undefined/原型模式1.png">
+<img src="/posts/18209/原型模式1.png">
 
 <p>代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//奖状类</span>
@@ -1127,7 +1127,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行结果为：</p>
-<img src="/posts/undefined/原型模式2.png">
+<img src="/posts/18209/原型模式2.png">
 
 <p><font color="red">说明：</font></p>
 <p>​    stu对象和stu1对象是同一个对象，就会产生将stu1对象中name属性值改为“李四”，两个Citation（奖状）对象中显示的都是李四。这就是浅克隆的效果，对具体原型类（Citation）中的引用类型的属性进行引用的复制。这种情况需要使用深克隆，而进行深克隆需要使用对象流。代码如下：</p>
@@ -1159,7 +1159,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行结果为：</p>
-<img src="/posts/undefined/原型模式3.png">
+<img src="/posts/18209/原型模式3.png">
 
 <blockquote>
 <p>注意：Citation类和Student类必须实现Serializable接口，否则会抛NotSerializableException异常。</p>
@@ -1643,53 +1643,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/18209.html">
+                <a href="/posts/62405.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="单例模式与原型模式">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="操作系统知识点整理--持续更新增加">
                         
-                        <span class="card-title">单例模式与原型模式</span>
+                        <span class="card-title">操作系统知识点整理--持续更新增加</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            4.1 单例设计模式单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
-这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个
+                            1. 总线1.1 5种分类
+数据总线:  处理CPU 和 RAM 之间来回传送的数据
+地址总线: 用来指定RAM种数据的地址
+控制总线: 常见的USB, Bus, 1394 Bus；是将微处理器控制单元的信号，传送到周边设备
+扩展总线: 可
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/设计模式/" class="post-category" target="_blank">
-                                    设计模式
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/单例模式/" target="_blank">
-                        <span class="chip bg-color">单例模式</span>
-                    </a>
-                    
-                    <a href="/tags/原型模式/" target="_blank">
-                        <span class="chip bg-color">原型模式</span>
+                    <a href="/tags/操作系统/" target="_blank">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
@@ -1707,7 +1704,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SpringcloudAlibaba">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="SpringcloudAlibaba">
                         
                         <span class="card-title">SpringcloudAlibaba</span>
                     </div>
@@ -1876,7 +1873,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">163.6k</span>
+            <span class="white-color">176.9k</span>
             
 
             <br>
