@@ -489,7 +489,7 @@ B-Tree
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.5k
+                    12.4k
                 </div>
                 
 
@@ -539,8 +539,7 @@ B-Tree
 </ul>
 <p><strong>B树</strong></p>
 <p>大多数存储引擎都支持B树索引。B树通常意味着所有的值都是按顺序存储的，并且每一个叶子到根的距离相同。B树索引能够加快访问数据的速度，因为存储引擎不再需要进行全表扫描来获取数据。下图就是一颗简单的B数</p>
-<img src="/posts/57626/20190905145008911.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20190905145008911.png" alt="20190905145008911"></p>
 <p>B树的查询流程：<br>如上图我要从找到E字母，查找流程如下：</p>
 <ol>
 <li>获取根节点的关键字进行比较，当前根节点关键字为M，E&lt;M（26个字母顺序），所以往找到指向左边的子节点（二分法规则，左小右大，左边放小于当前节点值的子节点、右边放大于当前节点值的子节点）；</li>
@@ -560,29 +559,25 @@ B-Tree
 </blockquote>
 <p><strong>二叉树</strong></p>
 <p>从二叉树开始，去用二叉树实现我们mysql索引的查询。如上表所示，我们使用col2 列做为索引列，用二叉树的，结构就是</p>
-<img src="/posts/57626/20210419142406700.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20210419142406700.png" alt="20210419142406700"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20210419142406700.png" alt="20210419142406700"></p>
 <p>如果我们需要查询 col2 = 66，需要查询 25&gt;30&gt;66，三次就可以遍历到我们需要的数据。</p>
 <p>是不是开始觉得二叉树也不错，为什么数据库不使用二叉树作为底层数据结构那？看下面这个，你就明白了</p>
 <p>接下来，我们以col1 为索引列，这样我们得到树状图是什么样子的，如下图。</p>
-<img src="/posts/57626/20210419145426989.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20210419145426989.png" alt="20210419145426989"></p>
 <p>样其实就相当于是一条链表，如果我们想要查询col1 = 7 的数据，1&gt;2&gt;3&gt;4&gt;5&gt;6&gt;7 七次才可以查询到我们想要的结果，如果更多数据那，那这个索引将毫无意义。</p>
 <p>这个时候，就需要我们红黑树登场了，红黑树的话，其实是二叉平衡树，可以自动平衡col1 这种节点的数据，如下图所示</p>
 <p><strong>红黑树</strong></p>
-<img src="/posts/57626/20210419145747827.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20210419145747827.png" alt="20210419145747827"></p>
 <p>这个时候如果我们在查询col1 = 7 ，2&gt;4&gt;6&gt;7 只需要四次就可以查询到。红黑树可以自动去平衡二叉树，其实还是二叉树，相对于二叉树而言，红黑树提高了效率。但是因为数的高度是不可控的，我们查询的次数跟树的高度是成正比的，树的高度越高，查询次数就越多，效率也就越低，如果是百万、千万，树的高度是不是就控制不了。所以树的高度不可控也是数据库 底层不使用红黑树的原因。<br>而b+tree的话，树的高度是可控的。下图为例;</p>
 <p><strong>B+树</strong></p>
-<img src="/posts/57626/20210419151645235.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20210419151645235.png" alt="20210419151645235"></p>
 <p>b+tree,是以页的方式来存储索引，最下层叶子节点，存储的是数据的一个地址。现在我们查询col=1的时候，只需要三次。相对于来说比较耗时的地方，就是第一次跟第二次，这里就是两次I/o,将数据加载到内存当中，在内存中遍历，耗费的性能忽略不计。</p>
 <pre><code>    每一页的大小，mysql给出的大约是16kb(建议不要更改)。我们就算字段类型是bigint，一个索引字段占用8B，中间的磁盘地址算6B。16kb/（8b+6B） 大约 为1170，第二层同样是1170,第三层存储的是我们的磁盘地址或者是数据，一行数据最多算1kb，估计都算大的数据了。也就是说，一页索引存满的话，大约可以存储1170*1170*16    = 两千多万数据，一般能到两千多万数据的话， 基本上都分库分表了。</code></pre><p>b+tree:非叶子节点不存储数据，只存储索引。叶子节点包含所有的索引字段。叶子节点用指针链接，提高了区间访问的性能（这块下一篇跟b-tree一起更容易理解）</p>
 <p><strong>这时候的出来了一个疑问，如果超过了两千多万，怎么存储，这个简单，树的高度在+1 不就可以了。这样的话，数据存储到上亿了。</strong></p>
 <p>也就是说，百万级别的数据，我们使用b+tree，也就是两次IO就可以找到你需要的数据。树的高度 也可控。只不过是横向扩展。</p>
 <p>B+树是B树的升级版</p>
-{% asset_img 20190905145248712.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20190905145248712.png" alt="20190905145248712"></p>
 <p><code>以表来分析</code></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> Student<span class="token punctuation">(</span>
  last_name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span> 
@@ -593,8 +588,7 @@ B-Tree
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对于表中的每一行数据，索引中包含了name，birthday列的值。下图显示了该索引的结构：</p>
-<img src="/posts/57626/20190905145820549.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20190905145820549.png" alt="20190905145820549"></p>
 <p><strong>索引对多个值进行排序的依据是create table语句中定义索引时列的顺序，即如果名字相同，则根据生日来排序。</strong><br><strong>B+树的结构决定了这种索引对以下类型的查询有效</strong>:</p>
 <ol>
 <li>全值匹配 和索引中所有的列进行匹配，例如查找姓名为Cuba Allen，生日为1960-01-01的人。</li>
@@ -623,8 +617,7 @@ B-Tree
 <p>可以毫不夸张的说，系统中 SQL 的好坏，是能直接决定你系统的快慢的。但是在优化之前大家是否想过一个问题？那就是：我们优化的原则是什么？优化SQL的理论基础是什么？</p>
 <p>虽然说实践出真知，但是我更相信理论是支撑实践的基础，因为我们不可能毫无目的的去盲目的实践，因为这样往往事倍功半。</p>
 <p>所以说了这么多只想告诉大家，在真正的开始索引优化之前，我们需要彻底搞明白索引的原理。这样再谈优化你将觉得更丝滑~</p>
-<img src="/posts/57626/a6de673e6de44c4aa98a58577c5d4234.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Ca6de673e6de44c4aa98a58577c5d4234.png" alt="a6de673e6de44c4aa98a58577c5d4234"></p>
 <h5 id="索引的本质"><a href="#索引的本质" class="headerlink" title="索引的本质"></a>索引的本质</h5><p>索引的本质是一种排好序的数据结构。这个我相信其实大家并不陌生，因为谈到索引很多人自然而然的就会联想到字典中的目录。</p>
 <p>没错，这样的类比是很形象的，但是如果再往深处说，恐怕很多小伙伴就有点张口结舌了，那既然你已经知道了索引的本质，那么您就已经有了看这篇文章的基础，相信读文本文的你，一定会对索引的原理有一个全新的了解。</p>
 <h5 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a><strong>索引分类</strong></h5><p>在数据库中，索引是分很多种类的（千万不要狭隘的认为索引只有 B+ 树，那是因为我们平时使用的基本都是 MySQL）。而不同的种类很显然是为了应付不同的场合，那索引到底有那些种类呢？下面就让我们来大致的了解下。</p>
@@ -647,11 +640,9 @@ B-Tree
          1. 一个节点只能有两个子节点。即度不超过2
          1. 左子节点 小于 本节点，右子节点 大于 本节点
      ```</code></pre><p>​      首先来看一下二叉树的样子</p>
-<img src="/posts/57626/a5249fd4af724930bb111c69d24849bc.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Ca5249fd4af724930bb111c69d24849bc.jpg" alt="a5249fd4af724930bb111c69d24849bc"></p>
 <p>​      但是在极端情况下会出现链化的情况，即节点一直在某一边增加。如下图</p>
-<img src="/posts/57626/3dda063cc2dd4cc499b38cf94d3ef3ce.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C3dda063cc2dd4cc499b38cf94d3ef3ce.jpg" alt="3dda063cc2dd4cc499b38cf94d3ef3ce"></p>
 <p>二叉树中，有一种特殊的结构——平衡二叉树，平衡二叉树的特点：</p>
 <pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    1. 根节点会随着数据的改变而变更</span>
 <span class="token code keyword">    1. 数据量越多，遍历次数越多，IO次数就越多，就越慢（磁盘的IO由树高决定）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -660,13 +651,11 @@ B-Tree
 <p>了解了二叉树之后，可以进一步谈一下什么是B树了。B 树大概是这样子的：</p>
 </li>
 </ul>
-<img src="/posts/57626/8dfe8242e8e545c0a91175f6fbbc3f6a.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C8dfe8242e8e545c0a91175f6fbbc3f6a.png" alt="8dfe8242e8e545c0a91175f6fbbc3f6a"></p>
 <p>从B树的结构图中可以看到每个节点中不仅包含数据的 key 值，还有 data 值。</p>
 <p>而每页的存储空间是有限的，如果 data 比较大，会导致每个节点的 key 存储的较少，当数据量较大的时候，同样会导致B树很深，从而增加了磁盘 IO 的次数，进而影响查询效率。</p>
 <p>好了，说到这里，常见的索引的种类也说完了，上面的内容仅仅是作为一个铺垫，下面我们正式开始 MySQL 的 B+ 树。</p>
-<img src="/posts/57626/54dcb75dae1343628fc738398673256a.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C54dcb75dae1343628fc738398673256a.png" alt="54dcb75dae1343628fc738398673256a"></p>
 <ul>
 <li>B+树<ul>
 <li>在 B+ 树中，所有数据记录节点都是按照键值的大小存放在同一层的叶子节点上，而非叶子结点只存储key的信息，这样可以大大减少每个节点的存储的key的数量，降低B+ 树的高度</li>
@@ -679,40 +668,31 @@ B-Tree
 </li>
 </ul>
 <p>​         好了说了这么多的 B+ 树的特点，我们来张图看看 B+ 树到底长什么样子（如果看不懂，也没有关系，下文会一步一步解释说明的）</p>
-<img src="/posts/57626/d836f0e2602f44fdb95d3229a539ad53.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cd836f0e2602f44fdb95d3229a539ad53.png" alt="d836f0e2602f44fdb95d3229a539ad53"></p>
 <p>上面的数据页就是实际存放数据页的地方，且数据页之间是通过双向链表进行连接的，好了到这里我们就将各个索引的类型快速了解了下，下面我们就开始正式B+树的分析。</p>
 <h5 id="主键目录"><a href="#主键目录" class="headerlink" title="主键目录"></a>主键目录</h5><p>我们将上图中的数据页拿出来再细化下，就成了下面的这张图</p>
-<img src="/posts/57626/13c71b40aa37474785deb89428639a06.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C13c71b40aa37474785deb89428639a06.png" alt="13c71b40aa37474785deb89428639a06"></p>
 <p>我们都知道 MySQL 在存储数据的时候是以<strong>数据页</strong>为最小单位的，且数据在数据页中的存储是<strong>连续</strong>的，数据页中的数据是按照主键排序的（没有主键是由 MySQL自己维护的 ROW_ID 来排序的），数据页和数据页之间是通过<strong>双向链表</strong>来关联的，数据与数据时间是通过<strong>单向链表</strong>来关联的。</p>
 <p>也就是说有一个在每个数据页中，他必然就有一个最小的主键，然后每个数据页的页号和最小的主键会组成一个<strong>主键目录</strong>（就像上图中的左边部分），假设现在要查找主键为 2 的数据，通过二分查找法最后确定下主键为 2 的记录在数据页 1 中，此时就会定位到数据页 1 接着再去定位主键为 2 的记录，我们先知道大致的流程，细节先不要深究，先从宏观看结构原理，再到微观看实现原理。</p>
 <p>刚刚上面是说的其实可以理解为是主键索引，主键索引也是最简单的最基础的索引。这个时候大家应该知道为什么你建立了主键查询就能变快了吧？</p>
 <h5 id="索引页"><a href="#索引页" class="headerlink" title="索引页"></a>索引页</h5><p>但是现在假设有很多很多的是数据页，那是不是对应的主键目录会很大很大呢？</p>
 <p>那假设有1000万条记录、5000万条记录呢？是不是就算是二分法查找，其效率也依旧是很低的，所以为了解决这种问题 MySQL 又设计出了一种新的存储结构—<strong>索引页</strong>。例如有下面这样情况，</p>
-<img src="/posts/57626/d2ed17bfe583473ba1947efe8a8c2f0f.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cd2ed17bfe583473ba1947efe8a8c2f0f.jpg" alt="d2ed17bfe583473ba1947efe8a8c2f0f"></p>
 <p>假设上面的主键目录中的记录是非常非常多的，此时上面的结构是演变成这样子的，MySQL 会将里面的记录拆分到不同的索引页中，也就是下面这样子的</p>
-<img src="/posts/57626/c298716fe9434993a6ffeb8f9c594e30.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cc298716fe9434993a6ffeb8f9c594e30.jpg" alt="c298716fe9434993a6ffeb8f9c594e30"></p>
 <p>索引页中记录的是每页数据页的页号和该数据页中最小的主键的记录，也就是说最小主键和数据页号不是单纯的维护在主键目录中了，而是演变成了索引页，索引页和数据页类似，一张不够存就分裂到下一张。</p>
 <p>假如现在要查找 id=20 的这条记录，咦？那我应该到哪个索引页中查找该条记录呢？所以这个时候肯定是需要去维护索引页的。</p>
 <p>没错，MySQL 也是这么设计的，也就是说 MySQL 同时也设计出了用于维护索引页的数据结构，其实也还叫<strong>索引页</strong>，只不过他们是在不同的层级，类似下面这样子的：</p>
-<img src="/posts/57626/b72f83176f58443c8e2f11d735b2f1ad.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cb72f83176f58443c8e2f11d735b2f1ad.jpg" alt="b72f83176f58443c8e2f11d735b2f1ad"></p>
 <p>也就是说<strong>维护索引页的索引页</strong>是在真正<strong>存储记录和数据页的索引页</strong>的上一层，现在如果你想查找 id=20 的这条记录，那就是从最上层的索引页开始查找，通过二分法查找，很快就能够定位到 id=20 s这条记录是在索引页 2  上，然后到就索引页 2 上面查找，接着就是和之前一样了（注意，索引页中的记录也是通过单向链表连接的），根据各个最小的主键能够定位到 id=20  是在数据页5上，假设数据页5是这样子的</p>
-<img src="/posts/57626/cfa0c5914ee44018b3d908291003dd01.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Ccfa0c5914ee44018b3d908291003dd01.jpg" alt="cfa0c5914ee44018b3d908291003dd01"></p>
 <p>那这个时候你是不是能够想明白数据是怎么定位的了呢？</p>
 <h5 id="索引页的分层"><a href="#索引页的分层" class="headerlink" title="索引页的分层"></a>索引页的分层</h5><p>好，既然你已经知道到索引页太多会往上一层扩散，那现在假设上一层的索引页记录也太多了，那该怎么办？很简单，继续分裂，再往上一层继续，不废话，我来画图帮助大家理解</p>
-<img src="/posts/57626/98ead49ca0224b6d962762cf4a61fda2.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C98ead49ca0224b6d962762cf4a61fda2.png" alt="98ead49ca0224b6d962762cf4a61fda2"></p>
 <p>我看明白了，你看明白了吗？我们来模拟一个查找的过程，假设你要查找 37 这条记录，说实话我根本不知道这条记录在哪里。好，现在我们就来模拟 MySQL 的查找过程，首先从<strong>最顶层的索引页</strong>开始查找，因为 id=37，因此定位到了索引页16，然后到索引页 16 中继续查找，此时同样能够定位到 id=37 在索引页 3 中，然后继续查找，最终能够定位到数据实在数据页 8 中，假设数据页 8 是这样子的</p>
-<img src="/posts/57626/acb278680ad1402a8c7763a0a853a2a2.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cacb278680ad1402a8c7763a0a853a2a2.jpg" alt="acb278680ad1402a8c7763a0a853a2a2"></p>
 <p>是不是很完美？如果非要我把上面的图画完整，那….小弟义不容辞（图太大了，索引页中数据的链表结构就不画出来了）</p>
-<img src="/posts/57626/ce0930235feb4ffab1805347fa7d4cfe.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cce0930235feb4ffab1805347fa7d4cfe.png" alt="ce0930235feb4ffab1805347fa7d4cfe"></p>
 <p>这个时候机智的你是不是已经发现了什么小秘密？他是不是很像一颗二叉树？实际上这就是一颗 B+ 树的结构，这也是数据在磁盘中真正存储的物理结构。B+树的特性是什么呢？B+树，也是二叉搜索树的一种，但是他的数据仅仅存储在叶子节点（在这里就是数据页），像这种<strong>索引页+数据页</strong>组成的组成的B+树就是<strong>聚簇索引</strong>(这句话很重要)。</p>
 <blockquote>
 <p>聚簇索引是 MySQL 基于主键索引结构创建的</p>
@@ -720,8 +700,7 @@ B-Tree
 <h5 id="非主键索引"><a href="#非主键索引" class="headerlink" title="非主键索引"></a>非主键索引</h5><p>但是现在问题又来了，既然这里强调的是<strong>主键索引</strong>，那我们平时开发中除了主键索引其他的索引也用的不少，这时候该怎么办？假设你现在 对name、age建立索引。现在回顾下主键索引，是不是在插入数据的时候基于主键的顺序去维护一个 B+ 树的？</p>
 <p>而实际上非主键索引其原理是一样的，MySQL 都是去维护一颗 B+  树，说白了，你建立多少个索引，MySQL  就会帮你维护多少的B+树（这下是不是也突然想明白了为什么索引不能建立太多了？以前就知道不能建立太多索引，因为索引也会占用空间，实际上这就是根本原因）</p>
 <p>假如现在真的对 name+age 建立索引，那此时是存放的呢？此时 MySQL 根据会 name+age 维护一个单独的 B+  树结构，数据依旧是存放在数据页中的，只不过是原来数据中的每条记录写的是  id=xx，现在写的是name=xx，age=xx，id=xx，不管怎么样，主键肯定会存放的，先来张图压压惊</p>
-<img src="/posts/57626/b553d884b8eb4a169324ae426ef02bf5.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cb553d884b8eb4a169324ae426ef02bf5.jpg" alt="b553d884b8eb4a169324ae426ef02bf5"></p>
 <p>在插入数据的时候，MySQL 首先会根据 name 进行排序，如果 name 一样，就根据联合索引中的 age 去排序，如果还一样，那么就会根据 主键 字段去排序。插入的原理就是这样子的。</p>
 <p>此时每个数据页中的记录存放的实际是<strong>索引字段</strong>和主键字段，而其他字段是不存的（为什么不存放？一样的数据到处存放很浪费空间的，也没必要，所以才会有下面的索引优化），至于查找，原理和过程跟聚簇索引一样，这里就不再赘述，但是，下面说的内容却是至关重要的：假设现在执行这样的SQL：</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> name <span class="token keyword">FROM</span> student <span class="token keyword">WHERE</span> name<span class="token operator">=</span><span class="token string">'wx'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -744,8 +723,7 @@ B-Tree
 <li>B+树的每个叶子节点有一个指针指向下一个节点，把所有的叶子节点串在了一起。</li>
 </ol>
 <p><strong>从下图我们可以直观的看到B树和B+树的区别：紫红色的箭头是指向被索引的数据的指针，大红色的箭头即指向下一个叶子节点的指针。</strong></p>
-<img src="/posts/57626/20190905145443436.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20190905145443436.png" alt="20190905145443436"></p>
 <p>我们假设被索引的列是主键，现在查找主键为5的记录，模拟一下查找的过程：<br>B树，在倒数第二层的节点中找到5后，可以立刻拿到指针获取行数据，查找停止。<br>B+树，在倒数第二层的节点中找到5后，由于中间节点不存有指针信息，则继续往下查找，在叶子节点中找到5，拿到指针获取行数据，查找停止。</p>
 <p>B+树每个父节点的元素都会出现在子节点中，是子节点的最大（或最小）元素。叶子节点存储了被索引列的所有的数据。</p>
 <p><strong>那B+树比起B树有什么优点呢？</strong><br>\1. 由于中间节点不存指针，同样大小的磁盘页可以容纳更多的节点元素，树的高度就小。（数据量相同的情况下，B+树比B树更加“矮胖”），查找起来就更快。<br>\2. B+树每次查找都必须到叶子节点才能获取数据，而B树不一定，B树可以在非叶子节点上获取数据。因此B+树查找的时间更稳定。<br>\3. B+树的每一个叶子节点都有指向下一个叶子节点的指针，方便范围查询和全表查询：只需要从第一个叶子节点开始顺着指针一直扫描下去即可，而B树则要对树做中序遍历。</p>
@@ -806,14 +784,13 @@ B-Tree
 </ul>
 <p>​       <code>a. id值相同,执行顺序由上而下</code></p>
 <pre class="line-numbers language-sql"><code class="language-sql"> <span class="token keyword">explain</span> <span class="token keyword">select</span> t2<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> t1<span class="token punctuation">,</span>t2<span class="token punctuation">,</span>t3 <span class="token keyword">where</span> t1<span class="token punctuation">.</span>id <span class="token operator">=</span> t2<span class="token punctuation">.</span>id <span class="token operator">and</span> t1<span class="token punctuation">.</span>id<span class="token operator">=</span> t3<span class="token punctuation">.</span>id <span class="token operator">and</span> t1<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'zs'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-{% asset_img index.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex.png" alt="index"></p>
 <p>​      <code>b. id值不同,id值越大优先级越高,越先被执行</code></p>
 <pre class="line-numbers language-sql"><code class="language-sql"> <span class="token keyword">explain</span> <span class="token keyword">select</span> t2<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> t2 <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">select</span> id <span class="token keyword">from</span> t1 <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">select</span> t3<span class="token punctuation">.</span>id <span class="token keyword">from</span> t3 <span class="token keyword">where</span> t3<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'zs3'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​     <img src="/posts/57626/index1.png"></p>
+<p>​    <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex1.png" alt="index1"></p>
 <p> <code>c. id值有相同的也有不同的,如果id相同,从上往下执行,id值越大,优先级越高,越先执行</code></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">2</span>  <span class="token keyword">explain</span> <span class="token keyword">select</span> t2<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> t3<span class="token punctuation">.</span>id <span class="token keyword">from</span> t3 <span class="token keyword">where</span> t3<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'zs3'</span><span class="token punctuation">)</span> s1<span class="token punctuation">,</span>t2 <span class="token keyword">where</span> s1<span class="token punctuation">.</span>id <span class="token operator">=</span> t2<span class="token punctuation">.</span>id<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​     {% asset_img index2.png %}</p>
+<p>​     <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex2.png" alt="index2"></p>
 <h4 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h4><p> 查询类型,主要用于区别</p>
 <ul>
 <li>SIMPLE : 简单的select查询,查询中不包含子查询或者UNION</li>
@@ -824,7 +801,7 @@ B-Tree
 <li>UNION RESULT: 从union表获取结果的select</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql">  <span class="token keyword">explain</span> <span class="token keyword">select</span> col1<span class="token punctuation">,</span>col2 <span class="token keyword">from</span> t1 <span class="token keyword">union</span> <span class="token keyword">select</span> col1<span class="token punctuation">,</span>col2 <span class="token keyword">from</span> t2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​     <img src="/posts/57626/index3.png"></p>
+<p>​    <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex3.png" alt="index3"></p>
 <h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p>　　显示这一行的数据是和哪张表相关</p>
 <h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>访问类型: all, index,range,ref,eq_ref, const,system,null</p>
 <p>最好到最差依次是: system &gt; const &gt; eq_ref&gt;ref &gt;range &gt; index &gt; all , 最好能优化到range级别或则ref级别</p>
@@ -833,84 +810,72 @@ B-Tree
 <li>const: 通过索引一次查询就找到了,const用于比较primary key或者unique索引,因为只匹配一行数据,所以很快,如将主键置于where列表中,mysql就会将该查询转换为一个常量</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"> <span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> s1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    {% asset_img index4.png %}</p>
+<p>   <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex4.png" alt="index4"></p>
 <ul>
 <li>eq_ref: 唯一性索引扫描, 对于每个索引键,表中只有一条记录与之匹配, 常见于主键或者唯一索引扫描</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1<span class="token punctuation">,</span>t2 <span class="token keyword">where</span> t1<span class="token punctuation">.</span>id <span class="token operator">=</span> t2<span class="token punctuation">.</span>id<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    <img src="/posts/57626/index5.png"></p>
+<p>​    <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex5.png" alt="index5"></p>
 <ul>
 <li>ref : 非唯一性索引扫描,返回匹配某个单独值的所有行,本质上也是一种索引访问,它返回所有符合条件的行,然而它可能返回多个符合条件的行</li>
 </ul>
-<p>​    <img src="/posts/57626/index6.png"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex6.png" alt="index6"></p>
 <p><img src="data:image/jpg;base64,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" alt="img"></p>
 <ul>
 <li>range : 只检索给定范围的行,  使用一个索引来选择行.key列显示的是真正使用了哪个索引,一般就是在where条件中使用between,&gt;,&lt;,in  等范围的条件,这种在索引范围内的扫描比全表扫描要好,因为它只在某个范围中扫描,不需要扫描全部的索引</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">where</span> id <span class="token operator">between</span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    {% asset_img index7.png %}</p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex7.png" alt="index7"></p>
 <ul>
 <li>index : 扫描整个索引表, index 和all的区别为index类型只遍历索引树. 这通常比all快,因为索引文件通常比数据文件小,虽然index和all都是读全表,但是index是从索引中读取,而all是从硬盘中读取数据</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> id <span class="token keyword">from</span> t1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    <img src="/posts/57626/index8.png"></p>
-<ul>
-<li>all : full table scan全表扫描 ,将遍历全表以找到匹配的行</li>
-</ul>
+<p> <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex8.png" alt="index8"></p>
+<p>all : full table scan全表扫描 ,将遍历全表以找到匹配的行</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    {% asset_img index9.png %}</p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex9.png" alt="index9"></p>
 <p><code>注意: 开发中,我们得保证查询至少达到range级别,最好能达到ref以上</code></p>
 <h4 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h4><p>　　SQL查询中可能用到的索引,但查询的过程中不一定真正使用</p>
 <h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><p>查询过程中真正使用的索引,如果为null,则表示没有使用索引</p>
 <p>查询中使用了覆盖索引,则该索引仅出现在key列表中</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">1</span> <span class="token keyword">explain</span> <span class="token keyword">select</span> t2<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> t1<span class="token punctuation">,</span>t2<span class="token punctuation">,</span>t3 <span class="token keyword">where</span> t1<span class="token punctuation">.</span>col1 <span class="token operator">=</span> <span class="token string">' '</span> <span class="token operator">and</span> t1<span class="token punctuation">.</span>id <span class="token operator">=</span> t2<span class="token punctuation">.</span>id <span class="token operator">and</span> t1<span class="token punctuation">.</span>id<span class="token operator">=</span> t3<span class="token punctuation">.</span>id<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
- <img src="/posts/57626/index10.png">
-
+<p> <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex10.png" alt="index10"></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">1</span> <span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
- {% asset_img index11.png %}
-
+<p> <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex11.png" alt="index11"></p>
 <h4 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h4><p>　　索引中使用的字节数,可通过该列计算查询中使用的索引的长度,在不损失精确度的情况下,长度越短越好, key_len显示的值为索引字段的最大可能长度,并非实际使用长度, 即key_len是根据表定义计算而得</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">1</span> <span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'c1'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
- <img src="/posts/57626/index12.png">
-
+<p> <img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex12.png" alt="index12"></p>
 <pre class="line-numbers language-sql"><code class="language-sql">  <span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'col1'</span> <span class="token operator">and</span> col2 <span class="token operator">=</span> <span class="token string">'col2'</span><span class="token punctuation">;</span>
 
   <span class="token comment" spellcheck="true">-- 注意: 为了演示这个结果,我们删除了c1上面的索引</span>
   <span class="token keyword">alter</span> <span class="token keyword">table</span> t1 <span class="token keyword">drop</span> <span class="token keyword">index</span> ind_t1_c1<span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">-- 执行完成之后,再次创建索引</span>
   <span class="token keyword">create</span> <span class="token keyword">index</span> ind_t1_c1 <span class="token keyword">on</span> t1<span class="token punctuation">(</span>col1<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/57626/index13.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex13.png" alt="index13"></p>
 <h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>　　显示索引的哪一列被使用了,如果可能的话,是一个常数.哪些列或者常量被用于查找索引列上的值</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1<span class="token punctuation">,</span>t2 <span class="token keyword">where</span> t1<span class="token punctuation">.</span>col1 <span class="token operator">=</span> t2<span class="token punctuation">.</span>col1 <span class="token operator">and</span> t1<span class="token punctuation">.</span>col2 <span class="token operator">=</span> <span class="token string">'col2'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-{% asset_img index14.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex14.png" alt="index14"></p>
 <h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><p>根据表统计信息及索引选用的情况,估算找出所需记录要读取的行数 (有多少行记录被优化器读取)</p>
 <h4 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h4><p>包含其它一些非常重要的额外信息</p>
 <ul>
 <li>Using filesort : 说明mysql会对数据使用一个外部的索引排序,而不是按照表内的索引顺序进行读取,Mysql中无法利用索引完成的排序操作称为文件排序</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql">  <span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'col1'</span> <span class="token keyword">order</span> <span class="token keyword">by</span> col3<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/57626/index15.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex15.png" alt="index15"></p>
 <pre class="line-numbers language-sql"><code class="language-sql"> <span class="token comment" spellcheck="true">-- 上面这条SQL语句出现了using filesort,但是我们去执行下面这条SQL语句的时候它,又不会出现using filesort</span>
 <span class="token number">3</span>   <span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'col1'</span> <span class="token keyword">order</span> <span class="token keyword">by</span> col2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<img src="/posts/57626/index16.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex16.png" alt="index16"></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">2</span>   <span class="token comment" spellcheck="true">-- 如何优化第一条SQL语句 ? </span>
 <span class="token number">3</span>   <span class="token keyword">create</span> <span class="token keyword">index</span> ind_t1_c13 <span class="token keyword">on</span> t1<span class="token punctuation">(</span>col1<span class="token punctuation">,</span>col3<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token number">4</span>   <span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'col1'</span> <span class="token keyword">order</span> <span class="token keyword">by</span> col3<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/57626/index17.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex17.png" alt="index17"></p>
 <ul>
 <li>Using temporary : 使用了临时表保存中间结果,Mysql在对查询结果排序时使用了临时表,常见于order by 和分组查询group by</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">></span><span class="token string">'col1'</span> <span class="token keyword">group</span> <span class="token keyword">by</span> col2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-{% asset_img index18.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex18.png" alt="index18"></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> col1 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1 <span class="token operator">></span><span class="token string">'col1'</span> <span class="token keyword">group</span> <span class="token keyword">by</span> col1<span class="token punctuation">,</span>col2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/57626/index19.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex19.png" alt="index19"></p>
 <ul>
 <li>Using index <ul>
 <li>查询操作中使用了覆盖索引(查询的列和索引列一致),避免访问了表的数据行,效率好</li>
@@ -921,19 +886,16 @@ B-Tree
 </li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> col2 <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'col1'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-{% asset_img index20.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex20.png" alt="index20"></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> col2 <span class="token keyword">from</span> t1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<img src="/posts/57626/index21.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex21.png" alt="index21"></p>
 <ul>
 <li>using where : 表明使用了where条件过滤</li>
 <li>using join buffer : 表明使用了连接缓存, join次数太多了可能会出现</li>
 <li>impossible where : where子句中的值总是false,不能用来获取任何数据</li>
 </ul>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">explain</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">where</span> col1<span class="token operator">=</span><span class="token string">'zs'</span> <span class="token operator">and</span> col1<span class="token operator">=</span><span class="token string">'ls'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-{% asset_img index22.png %}
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex22.png" alt="index22"></p>
 <ul>
 <li>select tables optimized away :</li>
 <li>在没有group by 子句的情况下, 基于索引优化min/max操作或者对于MyISAM存储引擎优化count(*)操作,不必等到执行阶段再进行计算,查询执行计划生成阶段即完成优化</li>
@@ -944,8 +906,7 @@ B-Tree
 <span class="token number">3</span>     <span class="token punctuation">(</span><span class="token keyword">select</span> id<span class="token punctuation">,</span>name <span class="token keyword">from</span> t1 <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'zs1'</span><span class="token punctuation">)</span> <span class="token number">a1</span>
 <span class="token number">4</span> <span class="token keyword">union</span>
 <span class="token number">5</span>     <span class="token keyword">select</span> name<span class="token punctuation">,</span>id <span class="token keyword">from</span> t2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/posts/57626/index23.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Cindex23.png" alt="index23"></p>
 <p><code>执行顺序如下:</code></p>
 <pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> id=4, select_type为union, union后的select语句先被执行
 
@@ -993,8 +954,7 @@ B-Tree
 <p>每个存储引擎为InnoDB的表都有一个特殊的索引，叫聚集索引。聚集索引并不是一种单独的索引类型，而是一种数据存储方式。当表有聚集索引的时候，它的数据行实际上存放在叶子页中。一个表不可能有两个地方存放数据，所以一个表只能有一个聚集索引。</p>
 <p>因为是存储引擎负责实现索引，因此不是所有的存储引擎都支持聚集索引。InnoDB表中聚集索引的索引列就是主键，所以聚集索引也叫主键索引。</p>
 <p><code>聚集索引（主键索引）的结构如下图：</code></p>
-<img src="/posts/57626/20190905150221394.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C20190905150221394.png" alt="20190905150221394"></p>
 <p>这是一颗B+树，它的叶子页包含了行的全部数据，节点页只包含了索引列（即主键）。</p>
 <p><strong>聚集索引的优点：</strong></p>
 <ul>
@@ -1024,15 +984,13 @@ B-Tree
 <p>binlog文件长什么样子呢？</p>
 </blockquote>
 <p>使用mysqlbinlog命令可以查看。</p>
-<img src="/posts/57626/5580ed0088d2404c945874231c598300.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C5580ed0088d2404c945874231c598300.png" alt="5580ed0088d2404c945874231c598300"></p>
 <p>会记录下每条变更的sql语句，还有执行开始时间，结束时间，事务id等等信息。</p>
 <blockquote>
 <p>如何查看binlog是否打开，如果没打开怎么设置？</p>
 </blockquote>
 <p>使用命令show variables like ‘%log_bin%’;查看binlog是否打开。</p>
-<img src="/posts/57626/0de234381a2f4599809248ca7df8b77f.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C0de234381a2f4599809248ca7df8b77f.jpg" alt="0de234381a2f4599809248ca7df8b77f"></p>
 <p>如果像上图一样，没有开启binlog，那怎么开启呢？</p>
 <p>找到my.cnf配置文件，增加下面配置(mysql版本5.7.31)：</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 打开binlog</span>
@@ -1041,14 +999,12 @@ log<span class="token operator">-</span>bin<span class="token operator">=</span>
 binlog<span class="token operator">-</span>format<span class="token operator">=</span><span class="token keyword">ROW</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改后，重启mysql，配置生效。</p>
 <p>执行SHOW MASTER STATUS;可以查看当前写入的binlog文件名。</p>
-<img src="/posts/57626/55c1af0b9ab4439b8208818fc8b596c8.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C55c1af0b9ab4439b8208818fc8b596c8.jpg" alt="55c1af0b9ab4439b8208818fc8b596c8"></p>
 <blockquote>
 <p>binlog用来干嘛的呢？</p>
 </blockquote>
 <p>第一，用于主从复制。一般在公司中做一主二从的结构时，就需要master节点打开binlog日志，从机订阅binlog日志的信息，因为binlog日志记录了数据库数据的变更，所以当master发生数据变更时，从机也能随着master节点的数据变更而变更，做到主从复制的效果。</p>
-<img src="/posts/57626/e3ebb1f0ef9b4d65891bfe59003a1678.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5Ce3ebb1f0ef9b4d65891bfe59003a1678.jpg" alt="e3ebb1f0ef9b4d65891bfe59003a1678"></p>
 <p>第二，用于数据恢复。因为binlog记录了数据库的变更，所以可以用于数据恢复。我们看到上面图中有个字段叫Position，这个参数是用于记录binlog日志的指针。当我们需要恢复数据时，只要指定–start-position和–stop-position，或者指定–start-datetime和–stop-datetime，那么就可以恢复指定区间的数据。</p>
 <h3 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h3><p>假设有一条update语句：</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">UPDATE</span> <span class="token punctuation">`</span><span class="token keyword">user</span><span class="token punctuation">`</span> <span class="token keyword">SET</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">'刘德华'</span> <span class="token keyword">WHERE</span> <span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token operator">=</span><span class="token string">'1'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1056,15 +1012,13 @@ binlog<span class="token operator">-</span>format<span class="token operator">=<
 <p>假设需要修改的数据加载到内存中，并且修改成功了，但是还没来得及刷到磁盘中，这时数据库宕机了</p>
 <p>，那么这次修改成功后的数据就丢失了。</p>
 <p>为了避免出现这种问题，MySQL引入了redo log。</p>
-<img src="/posts/57626/6089fdbb72134f5ebcae0b085d7ef515.jpg">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C6089fdbb72134f5ebcae0b085d7ef515.jpg" alt="6089fdbb72134f5ebcae0b085d7ef515"></p>
 <p>如图所示，当执行数据变更操作时，首先把数据也加载到内存中，然后在内存中进行更新，更新完成后写入到redo log buffer中，然后由redo log buffer在写入到redo log file中。</p>
 <p>redo log file记录着xxx页做了xxx修改，所以即使mysql发生宕机，也可以通过redo log进行数据恢复，也就是说在内存中更新成功后，即使没有刷新到磁盘中，但也不会因为宕机而导致数据丢失。</p>
 <blockquote>
 <p>redo log与事务机制是如何配合工作的？</p>
 </blockquote>
-<img src="/posts/57626/944d44e150114f5e9a38d3b421053ecc.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C944d44e150114f5e9a38d3b421053ecc.png" alt="944d44e150114f5e9a38d3b421053ecc"></p>
 <p>如图所示：</p>
 <p>第1-3步骤就是把数据变更，然后写入到内存中。</p>
 <p>第4步记录到redo log中，然后把记录置为prepare(准备)状态。</p>
@@ -1081,8 +1035,7 @@ binlog<span class="token operator">-</span>format<span class="token operator">=<
 <p>binlog又是在什么时候记录的呢？</p>
 </blockquote>
 <p>答，在提交事务的时候。</p>
-<img src="/posts/57626/73eb4001b0cf44afa9ca8fb1291b13d7.png">
-
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%5C73eb4001b0cf44afa9ca8fb1291b13d7.png" alt="73eb4001b0cf44afa9ca8fb1291b13d7"></p>
 <h3 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h3><p>undo log的作用主要<strong>用于回滚</strong>，mysql数据库的事务的原子性就是通过undo log实现的。我们都知道原子性是指对数据库的一系列操作，要么全部成功，要么全部失败。</p>
 <p>undo log主要存储的是数据的逻辑变化日志，比如说我们要insert一条数据，那么undo log就会生成一条对应的delete日志。简单点说，undo log记录的是数据修改之前的数据，因为需要支持回滚。</p>
 <p>那么当需要回滚时，只需要利用undo log的日志就可以恢复到修改前的数据。</p>
@@ -1818,7 +1771,7 @@ B-Tree
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">176.9k</span>
+            <span class="white-color">176.8k</span>
             
 
             <br>
